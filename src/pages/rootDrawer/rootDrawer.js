@@ -5,13 +5,15 @@ import { DrawerNavigator } from 'react-navigation'
 import MainTabs from '../mainTabs'
 import Settings from '../settings'
 
-const RootDrawer = DrawerNavigator({
-    MainTabs: {
-        screen: MainTabs,
-    },
-    Settings: {
-        screen: Settings
+const RootDrawer = DrawerNavigator(
+    {
+        MainTabs: {
+            screen: MainTabs,
+        },
+        Settings: {
+            screen: Settings
+        }
     }
-})
+)
 
 export default RootDrawer

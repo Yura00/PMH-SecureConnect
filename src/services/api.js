@@ -24,6 +24,6 @@ export default (email, password) => {
         // })
         setTimeout(() => {
             resolve(true)
-        }, 3000)
+        }, 1000)
     })
 }

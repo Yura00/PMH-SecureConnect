@@ -5,19 +5,26 @@ import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
 import Login from '../pages/login';
 import RootDrawer from '../pages/rootDrawer';
-import ProfileScreen from '../pages/ProfileScreen';
-import AppRoot from '../pages/AppRoot';
 import { addListener } from '../utils/redux';
 
-export const AppNavigator = StackNavigator({
-  Login: { screen: Login },
-  RootDrawer: { screen: RootDrawer },
-  Profile: { screen: ProfileScreen },
-  AppRoot: { screen: AppRoot }
-},
-{
-  headerMode: 'none'
-});
+export const AppNavigator = StackNavigator(
+  {
+    Login: { 
+      screen: Login,
+      navigationOptions: {
+        header: null
+      }
+    },
+    RootDrawer: { 
+      screen: RootDrawer 
+    }
+  },
+  {
+    navigationOptions: {
+      gesturesEnabled: false
+    }
+  }
+);
 
 class AppWithNavigationState extends React.Component {
   static propTypes = {
