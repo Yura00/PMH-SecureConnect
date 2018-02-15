@@ -43,12 +43,6 @@ class ChatListItem  extends Component {
 
   render() {
     return (
-    //   <View style={styles.container}>
-    //   <Image source={{ uri: this.props.picture.large}} style={styles.photo} />
-    //   <Text style={styles.text}>
-    //     {`${this.props.name.first} ${this.props.name.last}`}
-    //   </Text>
-    // </View>
       <Swipeable
         leftButtonWidth={100}
         rightButtonWidth={100}
