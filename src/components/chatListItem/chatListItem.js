@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
 import Swipeable from 'react-native-swipeable'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 12,
+    padding: 7,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -14,9 +15,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   photo: {
-    height: 40,
-    width: 40,
-    borderRadius: 20,
+    height: 50,
+    width: 50,
+    borderRadius: 25,
   },
   listItem: {
     height: 75,
@@ -43,35 +44,43 @@ class ChatListItem  extends Component {
 
   render() {
     return (
-      <Swipeable
-        leftButtonWidth={100}
-        rightButtonWidth={100}
-        leftButtons={[
-          <TouchableOpacity style={[styles.leftSwipeItem, {backgroundColor: 'papayawhip'}]}>
-            <Text>Delete</Text>
-          </TouchableOpacity>,
-          <TouchableOpacity style={[styles.leftSwipeItem, {backgroundColor: 'olivedrab'}]}>
-            <Text>Pin</Text>
-          </TouchableOpacity>
-        ]}
-        rightButtons={[
-          <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'lightseagreen'}]}>
-            <Text>1</Text>
-          </TouchableOpacity>,
-          <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'orchid'}]}>
-            <Text>2</Text>
-          </TouchableOpacity>
-        ]}
-        // onLeftButtonsOpenRelease={onOpen}
-        // onLeftButtonsCloseRelease={onClose}
-      >
-        <View style={styles.container}>
-          <Image source={{ uri: this.props.picture.large}} style={styles.photo} />
-          <Text style={styles.text}>
-            {`${this.props.name.first} ${this.props.name.last}`}
-          </Text>
-        </View>
-      </Swipeable>
+      <ThemeProvider>
+        <Swipeable
+          leftButtonWidth={100}
+          rightButtonWidth={100}
+          leftButtons={[
+            <TouchableOpacity style={[styles.leftSwipeItem, {backgroundColor: 'papayawhip'}]}>
+              <Text>Delete</Text>
+            </TouchableOpacity>,
+            <TouchableOpacity style={[styles.leftSwipeItem, {backgroundColor: 'olivedrab'}]}>
+              <Text>Pin</Text>
+            </TouchableOpacity>
+          ]}
+          rightButtons={[
+            <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'lightseagreen'}]}>
+              <Text>1</Text>
+            </TouchableOpacity>,
+            <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'orchid'}]}>
+              <Text>2</Text>
+            </TouchableOpacity>
+          ]}
+          // onLeftButtonsOpenRelease={onOpen}
+          // onLeftButtonsCloseRelease={onClose}
+        >
+          <View style={styles.container}>
+            <Badge
+              size={15}
+              color='#005555'
+              style={{ container: { bottom: -2, right: -2, backgroundColor: 'red', borderWidth: 2, borderColor: 'white'} }}
+            >
+              <Image source={{ uri: this.props.picture.large}} style={styles.photo} />
+            </Badge>
+            <Text style={styles.text}>
+              {`${this.props.name.first} ${this.props.name.last}`}
+            </Text>
+          </View>
+        </Swipeable>
+      </ThemeProvider>
     );
   }
 }
