@@ -20,6 +20,7 @@ export const AppNavigator = StackNavigator(
     }
   },
   {
+    initialRouteName: 'RootDrawer',//test
     navigationOptions: {
       gesturesEnabled: false
     }

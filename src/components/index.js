@@ -1,1 +1,6 @@
-export { default as ChatListItem } from './ChatListItem'
+export { default as ChatListItem } from './chatListItem'
+export { default as ContactListItem } from './contactListItem'
+export { default as ContactListSection } from './contactListSection'
+export { default as Switch } from './switch'
+export { default as AtoZList } from './atoZList'
+export { default as CallDialog } from './callDialog'

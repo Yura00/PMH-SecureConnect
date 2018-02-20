@@ -8,11 +8,20 @@ import Settings from '../settings'
 const RootDrawer = DrawerNavigator(
     {
         MainTabs: {
-            screen: MainTabs,
+            screen: MainTabs
         },
         Settings: {
             screen: Settings
         }
+    },
+    {
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#0f5fad',
+                // borderBottomWidth: 0
+            },
+            headerTintColor: 'white'
+          }
     }
 )
 

@@ -2970,7 +2970,7 @@ merge-stream@^1.0.1:
   dependencies:
     readable-stream "^2.0.1"
 
-merge@^1.1.3:
+merge@^1.1.3, merge@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.0.tgz#7531e39d4949c281a66b8c5a6e0265e8b05894da"
 
@@ -3645,6 +3645,28 @@ react-devtools-core@3.0.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-action-button@^2.8.4:
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/react-native-action-button/-/react-native-action-button-2.8.4.tgz#6c5ef988f6dc129a1e2d65e964dc38373a653b4f"
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-alphabetlistview@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-alphabetlistview/-/react-native-alphabetlistview-0.2.0.tgz#471879c0d205ec6acfd9964bcf3a5eb7bf7fc445"
+  dependencies:
+    merge "^1.2.0"
+
+react-native-atoz-list@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-atoz-list/-/react-native-atoz-list-1.0.2.tgz#799eec8d4c65b929d218b52ce52304b318de47e3"
+
+react-native-atoz-listview@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-atoz-listview/-/react-native-atoz-listview-0.0.7.tgz#ae1d8ac11a224aeacdf3b6f1c938b030c92788cd"
+  dependencies:
+    merge "^1.2.0"
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -3680,6 +3702,10 @@ react-native-safe-area-view@^0.6.0:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
+react-native-simple-dialogs@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-simple-dialogs/-/react-native-simple-dialogs-0.3.1.tgz#8b7cee294c6c2b140f3fd3c75f87b178e229936e"
+
 react-native-swipeable@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/react-native-swipeable/-/react-native-swipeable-0.6.0.tgz#0fe551330018b83c754d27f505709a594f554370"
@@ -3691,6 +3717,12 @@ react-native-swiper@^1.5.13:
   resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.13.tgz#fa695cd4ab77b9a9df2d2bfee38ea7274dd07a2e"
   dependencies:
     prop-types "^15.5.10"
+
+react-native-switch@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-switch/-/react-native-switch-1.3.0.tgz#a037e5793c3d9ee09c67f7485eb5008491267962"
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-tab-view@^0.0.74:
   version "0.0.74"

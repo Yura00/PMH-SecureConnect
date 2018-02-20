@@ -2,14 +2,14 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-    //   flex: 1,
-      padding: 7,
+      padding: 15,
+      paddingLeft: 30,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between'
     },
     listItem: {
-      height: 75,
+      height: 100,
       alignItems: 'center',
       justifyContent: 'center'
     },
@@ -25,12 +25,28 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'flex-end',
         justifyContent: 'center',
-        paddingRight: 20
+        paddingRight: 23
+    },
+    leftSwipeItemIcon: {
+        paddingRight: 5,
+        paddingTop: 5
+    },
+    leftSwipeItemText: {
+        color: 'white',
+        fontSize: 13
     },
     rightSwipeItem: {
         flex: 1,
         justifyContent: 'center',
-        paddingLeft: 20
+        paddingLeft: 10
+    },
+    rightSwipeItemIcon: {
+        paddingLeft: 20,
+        paddingTop: 5
+    },
+    rightSwipeItemText: {
+        color: 'white',
+        fontSize: 13
     },
     photo: {
         height: 50,
@@ -49,7 +65,7 @@ export default StyleSheet.create({
         fontSize: 16
     },
     message: {
-        marginLeft: 12,
+        marginLeft: 10,
         fontSize: 14,
         color: 'gray'
     },

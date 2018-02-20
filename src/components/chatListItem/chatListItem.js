@@ -1,41 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
+// import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Swipeable from 'react-native-swipeable'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 7,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  text: {
-    marginLeft: 12,
-    fontSize: 16,
-  },
-  photo: {
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-  },
-  listItem: {
-    height: 75,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  leftSwipeItem: {
-    flex: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    paddingRight: 20
-  },
-  rightSwipeItem: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingLeft: 20
-  }
-});
+import styles from './chatListItem.style'
 
 class ChatListItem  extends Component {
   constructor(props) {
@@ -43,6 +12,15 @@ class ChatListItem  extends Component {
   }
 
   render() {
+    var statusColor = 'gray'
+    if (this.props.status === 'online') {
+      statusColor = 'green'
+    } else if (this.props.status === 'away') {
+      statusColor = 'orange'
+    } else if (this.props.status === 'disturb') {
+      statusColor = 'darkred'
+    }
+
     return (
       <ThemeProvider>
         <Swipeable
@@ -68,16 +46,37 @@ class ChatListItem  extends Component {
           // onLeftButtonsCloseRelease={onClose}
         >
           <View style={styles.container}>
+
             <Badge
               size={15}
-              color='#005555'
-              style={{ container: { bottom: -2, right: -2, backgroundColor: 'red', borderWidth: 2, borderColor: 'white'} }}
+              style={{ container: [styles.status, {backgroundColor: statusColor}] }}
             >
               <Image source={{ uri: this.props.picture.large}} style={styles.photo} />
             </Badge>
-            <Text style={styles.text}>
-              {`${this.props.name.first} ${this.props.name.last}`}
-            </Text>
+
+            <View style={styles.container1}>
+              <Text style={styles.name}>
+                {`${this.props.name.first} ${this.props.name.last}`}
+              </Text>
+              <Text style={styles.message}>
+                {this.props.location.street}
+              </Text>
+            </View>
+
+            <View style={styles.container2}>
+              <Text style={styles.time}>
+                3:35 PM
+              </Text>
+              <Badge style={{ container: styles.unreadBadge }} size={18} text="3" />
+            </View>
+
+            <View style={styles.container2}>
+              <Text style={styles.rightArrow}>
+                >
+              </Text>
+              {/* <Badge style={{ container: styles.unreadBadge }} size={20} text="3" /> */}
+            </View>
+
           </View>
         </Swipeable>
       </ThemeProvider>

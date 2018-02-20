@@ -48,8 +48,4 @@ const MainTabs = TabNavigator ({
   }
 );
 
-// MainTabs.navigationOptions = {
-//   title: 'MainTabs Screen',
-// };
-
-export default MainTabs;
+export default MainTabs

@@ -3,7 +3,8 @@ import { View, Text, ListView } from 'react-native';
 import ChatListItem from '../../components/chatListItem'
 import styles from './chats.style'
 
-import data from './mockData'
+import ActionButton from 'react-native-action-button'
+import data from '../mockData'
 
 class Chats  extends Component {
   constructor(props) {
@@ -16,12 +17,18 @@ class Chats  extends Component {
 
   render() {
     return (
-      <ListView
-        style={styles.container}
-        dataSource={this.state.dataSource}
-        renderRow={(data) => <ChatListItem {...data} />}
-        renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-      />
+      <View style={styles.container}>
+        <ListView
+          style={styles.container}
+          dataSource={this.state.dataSource}
+          renderRow={(data) => <ChatListItem {...data} />}
+          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+        />
+        <ActionButton
+          buttonColor="blue"
+          onPress={() => { console.log("hi")}}
+        />
+      </View>
     );
   }
 }
