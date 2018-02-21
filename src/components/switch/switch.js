@@ -108,7 +108,6 @@ export default class Switch extends Component {
     	return (
 			<TouchableWithoutFeedback
 				onPress={() => this.handleSwitch()}
-				style={styles.root}
 			>
 				<Animated.View
 					style={[

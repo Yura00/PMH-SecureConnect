@@ -55,7 +55,8 @@ export default StyleSheet.create({
     },
     time: {
         top: -10,
-        color: 'green'
+        color: 'green',
+        fontSize: 12
     },
     unreadBadge: {
         top: -5

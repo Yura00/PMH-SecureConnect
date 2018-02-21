@@ -1,14 +1,12 @@
 import React from 'react'
-import { } from 'react-native'
 import { DrawerNavigator } from 'react-navigation'
+import MainStackNavigator from './MainStackNavigator'
+import { Settings } from '../pages'
 
-import MainTabs from '../mainTabs'
-import Settings from '../settings'
-
-const RootDrawer = DrawerNavigator(
+const RootDrawerNavigator = DrawerNavigator(
     {
-        MainTabs: {
-            screen: MainTabs
+        MainStackNavigator: {
+            screen: MainStackNavigator
         },
         Settings: {
             screen: Settings
@@ -18,11 +16,10 @@ const RootDrawer = DrawerNavigator(
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#0f5fad',
-                // borderBottomWidth: 0
             },
             headerTintColor: 'white'
           }
     }
 )
 
-export default RootDrawer
+export default RootDrawerNavigator

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ListView } from 'react-native';
-import ChatListItem from '../../components/chatListItem'
+import { ChatListItem, TopBar } from '../../components'
 import styles from './chats.style'
 
 import ActionButton from 'react-native-action-button'
@@ -18,8 +18,11 @@ class Chats  extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <TopBar>
+          <Text style={styles.title}> Chats </Text>
+        </TopBar>
         <ListView
-          style={styles.container}
+          style={styles.listView}
           dataSource={this.state.dataSource}
           renderRow={(data) => <ChatListItem {...data} />}
           renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
@@ -29,6 +32,7 @@ class Chats  extends Component {
           onPress={() => { console.log("hi")}}
         />
       </View>
+      
     );
   }
 }

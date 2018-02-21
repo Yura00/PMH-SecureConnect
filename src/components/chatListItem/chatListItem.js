@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Swipeable from 'react-native-swipeable'
 
 import styles from './chatListItem.style'
@@ -67,14 +67,11 @@ class ChatListItem  extends Component {
               <Text style={styles.time}>
                 3:35 PM
               </Text>
-              <Badge style={{ container: styles.unreadBadge }} size={18} text="3" />
+              <Badge style={{ container: styles.unreadBadge }} size={15} text="3" />
             </View>
 
             <View style={styles.container2}>
-              <Text style={styles.rightArrow}>
-                >
-              </Text>
-              {/* <Badge style={{ container: styles.unreadBadge }} size={20} text="3" /> */}
+              <MaterialIcons name='chevron-right' size={30} color={'gray'} />
             </View>
 
           </View>

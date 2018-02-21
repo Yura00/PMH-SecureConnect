@@ -79,15 +79,13 @@ class ContactListItem  extends Component {
             </View>
 
             <View style={{marginTop: 10, alignSelf: 'stretch', borderTopColor: 'lightgray', borderTopWidth: 1}}>
-            {/* <View style={{flexDirection: 'column',flex: 1, justifyContent: 'center', alignItems: 'center'}}> */}
               <Button onPress={() => this.setState({showDialog: !this.state.showDialog})} style={{ marginTop: 10, flex: 1 }} title="Cancel" />
-            {/* </View> */}
             </View>
 
           </Dialog>
 
 
-          <View style={styles.container}>
+          <TouchableOpacity style={styles.container} onPress={() => this.props.onPress ? this.props.onPress() : {}}>
 
             <Badge
               size={15}
@@ -112,7 +110,7 @@ class ContactListItem  extends Component {
               <MaterialIcons name='chevron-right' size={30} color={'gray'} />
             </View>
 
-          </View>
+          </TouchableOpacity>
         </Swipeable>
       </ThemeProvider>
     );

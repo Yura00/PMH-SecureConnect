@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import { NavigationActions } from 'react-navigation';
 import { View, Text, ListView } from 'react-native'
 import styles from './contacts.style'
 
 import ActionButton from 'react-native-action-button'
 import data from '../mockData'
 
-import { AtoZList, ContactListSection, ContactListItem, Switch } from '../../components/'
-// import AtoZListView from 'react-native-atoz-listview'
-// import AlphabetListView from 'react-native-alphabetlistview'
+import { TopBar, AtoZList, ContactListSection, ContactListItem, Switch } from '../../components/'
 
 const formatData = function(data) {
   // We're sorting by alphabetically so we need the alphabet
@@ -133,32 +132,24 @@ class Contacts  extends Component {
     const listData = formatData(data)
     return (
       <View style={styles.container}>
-        <View style={styles.topBar}>
-          <View style={styles.topBarContainer}>
-            <Switch 
-              value={false}
-              onValueChange={(val) => console.log(val)}
-              activeText={'Local'}
-              inActiveText={'Global'}
-              barWidth={160}
-              barHeight={25}
-            />
-          </View>
-        </View>
+        <TopBar>
+          <Switch 
+            value={false}
+            onValueChange={(val) => console.log(val)}
+            activeText={'Local'}
+            inActiveText={'Global'}
+            barWidth={160}
+            barHeight={25}
+          />
+        </TopBar>
         <AtoZList
           style={styles.listView}
           sectionHeaderHeight={0}
           cellHeight={60}
           data={listData}
-          renderCell={(data) => <ContactListItem {...data} />}
+          renderCell={(data) => <ContactListItem {...data} onPress={() => this.props.navigation.navigate('Chat', {data: data})}/>}
           renderSection={(data) => <ContactListSection data={data.sectionId}/>}
         />
-        {/* <ListView
-          style={styles.container}
-          dataSource={this.state.dataSource}
-          renderRow={(data) => <ContactListItem {...data} />}
-          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-        /> */}
         <ActionButton
           buttonColor="blue"
           onPress={() => { console.log("hi")}}

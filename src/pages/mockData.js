@@ -3,8 +3,8 @@ export default data = [
       "gender": "male",
       "name": {
         "title": "mr",
-        "first": "aiden",
-        "last": "lucas"
+        "first": "Alexander",
+        "last": "Kasimov"
       },
       "location": {
         "street": "1446 oak lawn ave",

@@ -1,46 +1,38 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
+    backButtonContainer: {
+      flexDirection: 'row',
+      alignItems: 'center'
+    },
+    backButtonTitle: {
+      fontSize: 16,
+      color: 'white'
+    },
+
+    footerContainer: {
+      marginTop: 5,
+      marginLeft: 10,
+      marginRight: 10,
+      marginBottom: 10,
+    },
+    footerText: {
+      fontSize: 14,
+      color: '#aaa',
+    },
+
+
     container: {
       flex: 1,
       position: 'relative'
     },
-    topBar: {
-      alignItems: 'center',
-      zIndex: 3,
-      alignSelf: 'stretch',
-      justifyContent: 'center',
-      height: 50,
-      backgroundColor: 'transparent'
-    },
-    topBarContainer: {
-      position: 'absolute',
+    topButtons: {
+      flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      width: 1000,
-      height: 1000,
-      bottom: 0,
-      borderBottomRightRadius: 500,
-      borderBottomLeftRadius: 500,
-      zIndex: 1,
-      backgroundColor: '#0f5fad'
-    },
-    listView: {
-      flex: 1,
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      // paddingTop: 50,
-      position: 'absolute'
-    },
-    sectionText: {
-      top: 40,
-      height: 0,
-      justifyContent: 'center',
-      backgroundColor: 'gray',
-      paddingLeft: 10,
-      fontSize: 25
+      backgroundColor: 'transparent',
+      zIndex: 5,
+      padding: 15
     },
     separator: {
       flex: 1,

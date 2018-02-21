@@ -1,15 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    root: {
-		// justifyContent: 'space-between',
-		// flexDirection: 'column',
-		// flex: 1,
-		// backgroundColor: 'black'
-	},
 	container: {
 		position: 'absolute',
-		bottom: 20,
+		// bottom: 20,
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',

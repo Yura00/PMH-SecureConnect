@@ -2,27 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
-
-import Login from '../pages/login';
-import RootDrawer from '../pages/rootDrawer';
+import { Login } from '../pages';
+import RootDrawerNavigator from './RootDrawerNavigator';
 import { addListener } from '../utils/redux';
 
 export const AppNavigator = StackNavigator(
   {
     Login: { 
-      screen: Login,
-      navigationOptions: {
-        header: null
-      }
+      screen: Login
     },
-    RootDrawer: { 
-      screen: RootDrawer 
+    RootDrawerNavigator: { 
+      screen: RootDrawerNavigator
     }
   },
   {
-    initialRouteName: 'RootDrawer',//test
+    initialRouteName: 'RootDrawerNavigator',//test
     navigationOptions: {
-      gesturesEnabled: false
+      gesturesEnabled: false,
+      header: null
     }
   }
 );
