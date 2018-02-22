@@ -3831,6 +3831,12 @@ react-native-lightbox@^0.7.0:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-linear-gradient@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.0.tgz#51d8ea12bb72a59bede9edc87b694b16b64cf435"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-material-design-styles@^0.2.6:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/react-native-material-design-styles/-/react-native-material-design-styles-0.2.7.tgz#428560ef4d0659db1163c9f9b5476d886ed22d57"

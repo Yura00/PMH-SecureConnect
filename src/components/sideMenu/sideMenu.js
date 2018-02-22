@@ -3,8 +3,7 @@ import React, {Component} from 'react';
 import styles from './sideMenu.style';
 import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
-import { Button } from 'react-native-elements'
-
+import { ShadowButton } from '../'
 import {Images, Colors} from '../../themes'
 import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
 
@@ -58,7 +57,7 @@ class SideMenu extends Component {
           </View>
           <View style={styles.footerContainer}>
             <View style={styles.seperator} />
-            <Button style={styles.button} large title='Logout' />
+            <ShadowButton label='Logout' />
           </View>
         </View>
       </ThemeProvider>

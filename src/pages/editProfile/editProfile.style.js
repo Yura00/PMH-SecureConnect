@@ -34,7 +34,8 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 18,
+    fontSize: 17,
+    fontWeight: '600',
     color: 'white'
   },
   avatar: {
@@ -44,8 +45,6 @@ export default StyleSheet.create({
     borderRadius: 50,
     bottom: -40
   },
-  
-
   container: {
     flex: 1,
     flexDirection: 'column'

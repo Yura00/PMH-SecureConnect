@@ -35,6 +35,7 @@ import { Colors } from "../../themes";
     },
     name: {
         fontSize: 17,
+        fontWeight: '500',
         color: Colors.default,
         paddingTop: 15
     },
@@ -45,7 +46,7 @@ import { Colors } from "../../themes";
         width: 0.7,
         flex: 1,
         margin: 8,
-        backgroundColor: Colors.default
+        backgroundColor: '#3fa0ff'
     },
     pageName: {
         fontSize: 16

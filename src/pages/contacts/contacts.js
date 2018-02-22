@@ -83,42 +83,6 @@ const atozdata= {
   ]
 }
 class Contacts  extends Component {
-  // static navigationOptions = { 
-  //   // headerStyle:{ 
-  //   //   position: 'absolute', 
-  //   //   backgroundColor: '#bbb', 
-  //   //   zIndex: 100, 
-  //   //   height: 200,
-  //   //   top: 0, 
-  //   //   left: 0, 
-  //   //   right: 0 
-  //   // },
-  //   style: {
-  //     backgroundColor: 'transparent'
-  //   },
-  //   // headerTintColor: 'transparent',
-  //   header: ( /* Your custom header */
-  //     <View
-  //       style={{
-  //         height: 80,
-  //         backgroundColor: 'transparent',
-  //         borderRadius: 100,
-  //         marginTop: 20 /* only for IOS to give StatusBar Space */
-  //       }}
-  //     >
-  //       <Text style={{
-  //         backgroundColor: 'blue',
-  //         marginTop: 20 /* only for IOS to give StatusBar Space */
-  //       }}>This is CustomHeader</Text>
-  //     </View>
-  //   )
-  // };
-  // static navigatorStyle = {
-  //   navBarBackgroundColor: 'transparent', // the background is black
-  //   drawUnderNavBar: true,
-  //   drawUnderTabBar: true,
-  //   navBarTranslucent: true
-  // };
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
