@@ -1,27 +1,35 @@
 import React, { Component } from 'react';
-import { View, Text, ListView } from 'react-native';
-import { TopBar, ChatListItem, Switch } from '../../components'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { TopBar } from '../../components'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import styles from './fileSharing.style'
-
-import ActionButton from 'react-native-action-button'
-import data from '../mockData'
 
 class FileSharing  extends Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows(data),
-    };
   }
 
   render() {
     return (
         <View style={styles.container}>
-            <TopBar onDrawer>
-                <Text style={styles.title}> File Sharing </Text>
-            </TopBar>
-            
+          <TopBar onDrawer navigation={this.props.navigation}>
+              <Text style={styles.title}> File Sharing </Text>
+          </TopBar>
+
+          <View style={styles.topContainer}>
+            <TouchableOpacity style={styles.btnAddFile}>
+              <MaterialCommunityIcons name='plus' size={35} color={'gray'} />
+              <Text style={styles.btnText}> ADD FILE </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.bottomContainer}>
+            <TouchableOpacity style={styles.chooseContact}>
+              <Text style={styles.text}> Choose contact to share </Text>
+              <MaterialCommunityIcons name='chevron-right' size={25} color={'gray'} />
+            </TouchableOpacity>
+            <Text style={styles.commentTitle}> Add comment </Text>
+            <TextInput style={styles.commentText} multiline placeholder='Enter commnet...'/>
+          </View>
         </View>
     );
   }

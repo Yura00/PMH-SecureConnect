@@ -7,27 +7,50 @@ export default StyleSheet.create({
     },
     container: {
       flex: 1,
-      position: 'relative'
+      flexDirection: 'column'
     },
-    listView: {
-      flex: 1,
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      position: 'absolute'
-    },
-    sectionText: {
-      top: 40,
-      height: 0,
+    topContainer: {
+      flex: 0.8,
       justifyContent: 'center',
-      backgroundColor: 'gray',
-      paddingLeft: 10,
-      fontSize: 25
+      alignItems: 'center',
     },
-    separator: {
+    btnAddFile: {
+      width: 120,
+      height: 120,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'lightgray',
+    },
+    btnText: {
+      color: 'gray',
+      fontWeight: 'bold',
+    },
+    text: {
       flex: 1,
-      height: StyleSheet.hairlineWidth,
-      backgroundColor: '#8E8E8E',
+      color: 'black'
+    },
+    bottomContainer: {
+      flex: 1,
+      flexDirection: 'column',
+      margin: 20
+    },
+    chooseContact: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      height: 40,
+      borderBottomWidth: 1,
+      borderColor: 'lightgray'
+    },
+    commentTitle: {
+      marginTop: 20,
+      marginBottom: 10
+    },
+    commentText: {
+      flex: 1,
+      padding: 20,
+      marginBottom: 50,
+      borderTopWidth: 0.5,
+      borderBottomWidth: 0.5,
+      borderColor: 'lightgray',
     }
   });

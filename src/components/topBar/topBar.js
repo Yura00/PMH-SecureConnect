@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import {NavigationActions} from 'react-navigation';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { Dialog } from 'react-native-simple-dialogs'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import {Images, Colors} from '../../themes'
 
 import styles from './topBar.style'
 
@@ -18,6 +20,12 @@ class TopBar  extends Component {
     }
     return (
       <View style={[styles.container, {height: height}]}>
+        {this.props.onDrawer 
+          ? <TouchableOpacity style={styles.drawerContainer} onPress={() => this.props.navigation.navigate('MainStackNavigator')}>
+              <MaterialIcons name='chevron-left' size={30} color={'white'} />
+            </TouchableOpacity>
+          : null
+        }
         <View style={styles.background} />
         <View style={styles.paddingTop} />
         <View style={styles.content}>
@@ -27,5 +35,9 @@ class TopBar  extends Component {
     );
   }
 }
+
+TopBar.propTypes = {
+  navigation: PropTypes.object
+};
 
 export default TopBar;

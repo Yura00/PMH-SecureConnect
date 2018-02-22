@@ -12,7 +12,7 @@ const MainTabNavigator = TabNavigator ({
       navigationOptions: {
         title: 'Contacts',
         tabBarLabel: 'Contacts',
-        tabBarIcon: ({ tintColor }) => {return (<Image source={require('../assets/icon_tab_contacts.png')} style={[styles.icon, { tintColor: tintColor }]} />)}
+        tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_contacts} style={[styles.icon, { tintColor: tintColor }]} />)}
       }
     },
     Chats: {
@@ -20,7 +20,7 @@ const MainTabNavigator = TabNavigator ({
       path: '/chats',
       navigationOptions: {
         tabBarLabel: 'chats',
-        tabBarIcon: ({ tintColor }) => {return (<Image source={require('../assets/icon_tab_chats.png')} style={[styles.icon, { tintColor: tintColor }]} />)}
+        tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_chats} style={[styles.icon, { tintColor: tintColor }]} />)}
       }
     },
     Notifications: {
@@ -28,14 +28,14 @@ const MainTabNavigator = TabNavigator ({
       navigationOptions: {
         title: 'Notifications',
         tabBarLabel: 'Notifications',
-        tabBarIcon: ({ tintColor }) => {return (<Image source={require('../assets/icon_tab_notifications.png')} style={[styles.icon, { tintColor: tintColor }]} />)}
+        tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_notifications} style={[styles.icon, { tintColor: tintColor }]} />)}
       }
     },
     Channels: {
       screen: Channels,
       navigationOptions: {
         tabBarLabel: 'Channels',
-        tabBarIcon: ({ tintColor }) => {return (<Image source={require('../assets/icon_tab_channels.png')} style={[styles.icon1, { tintColor: tintColor }]} />)}
+        tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_channels} style={[styles.icon1, { tintColor: tintColor }]} />)}
       }
     }
   },

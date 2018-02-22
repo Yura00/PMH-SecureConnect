@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import styles from './customDrawer.style';
+import styles from './sideMenu.style';
 import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
 import { Button } from 'react-native-elements'
@@ -8,7 +8,7 @@ import { Button } from 'react-native-elements'
 import {Images, Colors} from '../../themes'
 import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
 
-class CustomDrawer extends Component {
+class SideMenu extends Component {
   navigateToScreen = (route) => () => {
     const navigateAction = NavigationActions.navigate({
       routeName: route
@@ -18,9 +18,8 @@ class CustomDrawer extends Component {
 
   render () {
     return (
-    <ThemeProvider>
-      <View style={styles.container}>
-        {/* <ScrollView> */}
+      <ThemeProvider>
+        <View style={styles.container}>
           <View style={styles.profile}>
             <Badge
               size={23}
@@ -37,40 +36,38 @@ class CustomDrawer extends Component {
                 <Text style={styles.pageName}> Secure File Sharing </Text>
             </TouchableOpacity>
             <View style={styles.seperator} />
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Page2')}>
-                <Text style={styles.pageName}> Check Backup </Text>
+            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('ChangeBackup')}>
+                <Text style={styles.pageName}> Change Backup </Text>
             </TouchableOpacity>
             <View style={styles.seperator} />
-
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Page2')}>
+            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('EditProfile')}>
                 <Text style={styles.pageName}> Edit Profile </Text>
             </TouchableOpacity>
             <View style={styles.seperator} />
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Page2')}>
+            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('OutOffice')}>
                 <Text style={styles.pageName}> Out of Office </Text>
             </TouchableOpacity>
             <View style={styles.seperator} />
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Page2')}>
+            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Support')}>
                 <Text style={styles.pageName}> Support </Text>
             </TouchableOpacity>
             <View style={styles.seperator} />
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Page2')}>
+            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Settings')}>
                 <Text style={styles.pageName}> Settings </Text>
             </TouchableOpacity>
           </View>
-        {/* </ScrollView> */}
-            <View style={styles.footerContainer}>
-                <View style={styles.seperator} />
-                <Button style={styles.button} large title='Logout' />
-            </View>
-      </View>
-    </ThemeProvider>
+          <View style={styles.footerContainer}>
+            <View style={styles.seperator} />
+            <Button style={styles.button} large title='Logout' />
+          </View>
+        </View>
+      </ThemeProvider>
     );
   }
 }
 
-CustomDrawer.propTypes = {
+SideMenu.propTypes = {
   navigation: PropTypes.object
 };
 
-export default CustomDrawer;
+export default SideMenu;

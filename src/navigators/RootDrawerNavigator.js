@@ -1,8 +1,8 @@
 import React from 'react'
 import { DrawerNavigator } from 'react-navigation'
 import MainStackNavigator from './MainStackNavigator'
-import { FileSharing, Settings } from '../pages'
-import { CustomDrawer } from '../components'
+import { FileSharing, ChangeBackup, EditProfile, OutOffice, Support, Settings } from '../pages'
+import { SideMenu } from '../components'
 
 const RootDrawerNavigator = DrawerNavigator(
     {
@@ -12,12 +12,24 @@ const RootDrawerNavigator = DrawerNavigator(
         FileSharing: {
             screen: FileSharing
         },
+        ChangeBackup: {
+            screen: ChangeBackup
+        },
+        EditProfile: {
+            screen: EditProfile
+        },
+        OutOffice: {
+            screen: OutOffice
+        },
+        Support: {
+            screen: Support
+        },
         Settings: {
             screen: Settings
         }
     },
     {
-        contentComponent: CustomDrawer,
+        contentComponent: SideMenu,
         drawerWidth: 250,
         navigationOptions: {
             headerStyle: {

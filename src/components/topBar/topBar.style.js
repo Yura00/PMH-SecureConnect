@@ -7,8 +7,7 @@ export default StyleSheet.create({
         zIndex: 3,
         alignSelf: 'stretch',
         justifyContent: 'center',
-        height: 40,
-        backgroundColor: 'transparent'
+        height: 40
       },
       background: {
         position: 'absolute',
@@ -30,7 +29,15 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'transparent',
         zIndex: 5
+      },
+      drawerContainer: {
+        position: 'absolute',
+        left: 5,
+        top: 25,
+        zIndex: 10
+      },
+      drawerIcon: {
+        resizeMode: 'contain'
       }
   });

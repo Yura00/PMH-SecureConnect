@@ -1,4 +1,5 @@
-export { default as CustomDrawer } from './customDrawer'
+export { default as SideMenu } from './sideMenu'
+export { default as Drawer } from './drawer'
 export { default as ChatListItem } from './chatListItem'
 export { default as ContactListItem } from './contactListItem'
 export { default as ContactListSection } from './contactListSection'
