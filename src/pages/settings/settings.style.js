@@ -7,27 +7,22 @@ export default StyleSheet.create({
     },
     container: {
       flex: 1,
-      position: 'relative'
+      flexDirection: 'column'
     },
-    listView: {
+    text: {
       flex: 1,
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      position: 'absolute'
+      color: 'black'
     },
-    sectionText: {
-      top: 40,
-      height: 0,
-      justifyContent: 'center',
-      backgroundColor: 'gray',
-      paddingLeft: 10,
-      fontSize: 25
-    },
-    separator: {
+    mainContainer: {
       flex: 1,
-      height: StyleSheet.hairlineWidth,
-      backgroundColor: '#8E8E8E',
+      flexDirection: 'column',
+      margin: 20
+    },
+    chooseContact: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      height: 40,
+      borderBottomWidth: 1,
+      borderColor: 'lightgray'
     }
   });

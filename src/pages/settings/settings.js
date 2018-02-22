@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
-import { View, Text, ListView } from 'react-native';
-import { TopBar, ChatListItem, Switch } from '../../components'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Button } from 'react-native-elements'
+import { TopBar } from '../../components'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import styles from './settings.style'
-
-import ActionButton from 'react-native-action-button'
-import data from '../mockData'
 
 class Settings  extends Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
     this.state = {
-      dataSource: ds.cloneWithRows(data),
-    };
+      subject: ''
+    }
   }
 
   render() {
     return (
-        <View style={styles.container}>
-            <TopBar onDrawer navigation={this.props.navigation}>
-                <Text style={styles.title}> Settings </Text>
-            </TopBar>
-            
+      <View style={styles.container}>
+        <TopBar onDrawer navigation={this.props.navigation}>
+            <Text style={styles.title}> Settings </Text>
+        </TopBar>
+
+        <View style={styles.mainContainer}>
+          <TouchableOpacity style={styles.chooseContact}>
+            <Text style={styles.text}> Theme </Text>
+            <MaterialCommunityIcons name='chevron-right' size={25} color={'gray'} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.chooseContact}>
+            <Text style={styles.text}> Notifications </Text>
+            <MaterialCommunityIcons name='chevron-right' size={25} color={'gray'} />
+          </TouchableOpacity>
         </View>
+      </View>
     );
   }
 }
