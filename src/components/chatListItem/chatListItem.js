@@ -5,6 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Swipeable from 'react-native-swipeable'
 
 import styles from './chatListItem.style'
+import { Colors } from '../../themes'
 
 class ChatListItem  extends Component {
   constructor(props) {
@@ -12,13 +13,13 @@ class ChatListItem  extends Component {
   }
 
   render() {
-    var statusColor = 'gray'
+    var statusColor = Colors.offline
     if (this.props.status === 'online') {
-      statusColor = 'green'
+      statusColor = Colors.online
     } else if (this.props.status === 'away') {
-      statusColor = 'orange'
+      statusColor = Colors.away
     } else if (this.props.status === 'disturb') {
-      statusColor = 'darkred'
+      statusColor = Colors.disturb
     }
 
     return (
@@ -51,7 +52,7 @@ class ChatListItem  extends Component {
               size={15}
               style={{ container: [styles.status, {backgroundColor: statusColor}] }}
             >
-              <Image source={{ uri: this.props.picture.large}} style={styles.photo} />
+              {/* <Image source={{ uri: this.props.picture.large}} style={styles.photo} /> */}
             </Badge>
 
             <View style={styles.container1}>

@@ -5,7 +5,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Swipeable from 'react-native-swipeable'
 import styles from './contactListItem.style'
+import { Colors, Images } from '../../themes'
 import { Dialog } from 'react-native-simple-dialogs'
+import { LeftSwipeItem, RightSwipeItem, CallDialog } from '../'
 
 class ContactListItem  extends Component {
   constructor(props) {
@@ -15,14 +17,18 @@ class ContactListItem  extends Component {
     }
   }
 
+  measureLeft (event) {
+		this.setState({leftLabelWidth: event.nativeEvent.layout.width})
+	}
+
   render() {
-    var statusColor = 'gray'
+    var statusColor = Colors.offline
     if (this.props.status === 'online') {
-      statusColor = 'green'
+      statusColor = Colors.online
     } else if (this.props.status === 'away') {
-      statusColor = 'orange'
+      statusColor = Colors.away
     } else if (this.props.status === 'disturb') {
-      statusColor = 'darkred'
+      statusColor = Colors.disturb
     }
 
     return (
@@ -31,24 +37,32 @@ class ContactListItem  extends Component {
           leftButtonWidth={90}
           rightButtonWidth={90}
           leftButtons={[
-            <TouchableOpacity style={[styles.leftSwipeItem, {backgroundColor: 'red'}]}>
-              <MaterialIcons name='delete' size={30} color={'white'} style={styles.leftSwipeItemIcon} />
-              <Text style={styles.leftSwipeItemText}>Delete</Text>
-            </TouchableOpacity>,
+            <LeftSwipeItem 
+              source={Images.icon_delete} 
+              label='Delete' 
+              backgroundColor={Colors.red}
+              onPress={() => console.log('Delete clicked')}
+            />
           ]}
           rightButtons={[
-            <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'lightseagreen'}]}>
-              <MaterialCommunityIcons name='phone-plus' size={30} color={'white'} style={styles.rightSwipeItemIcon} />
-              <Text style={styles.rightSwipeItemText}>Emergency</Text>
-            </TouchableOpacity>,
-            <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'orange'}]}>
-              <MaterialCommunityIcons name='video' size={30} color={'white'} style={styles.rightSwipeItemIcon} />
-              <Text style={styles.rightSwipeItemText}>Chat</Text>
-            </TouchableOpacity>,
-            <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'orchid'}]} onPress={() => this.setState({showDialog: !this.state.showDialog})}>
-              <MaterialIcons name='call' size={30} color={'white'} style={styles.rightSwipeItemIcon} />
-              <Text style={styles.rightSwipeItemText}>Call</Text>
-            </TouchableOpacity>
+            <RightSwipeItem 
+              source={Images.icon_emergency} 
+              label='Emergency' 
+              backgroundColor={Colors.darkred}
+              onPress={() => console.log('Emergency clicked')}
+            />,
+            <RightSwipeItem 
+              source={Images.icon_comment_left} 
+              label='Chat' 
+              backgroundColor={Colors.orange}
+              onPress={() => console.log('Chat clicked')}
+            />,
+            <RightSwipeItem 
+              source={Images.icon_phone} 
+              label='Call' 
+              backgroundColor={Colors.green}
+              onPress={() => this.setState({showDialog: true})}
+            />
           ]}
           // onLeftButtonsOpenRelease={onOpen}
           // onLeftButtonsCloseRelease={onClose}
@@ -65,16 +79,16 @@ class ContactListItem  extends Component {
 
             <View style={{flexDirection: 'row', marginBottom: 10}}>
               <View style={{flexDirection: 'column',flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor:'lightseagreen', padding: 8, margin: 5}}>
-                  <MaterialCommunityIcons name='phone-plus' size={20} color={'white'}  />
+                <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor: Colors.orange, padding: 8, margin: 5}}>
+                  <Image source={Images.icon_camera} style={{width: 20, height: 20, resizeMode: 'contain'}}/>
                 </View>
                 <Text style={{color: 'black'}}>Video</Text>
               </View>
               <View style={{flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor:'orange', padding: 8, margin: 5}}>
-                  <MaterialCommunityIcons name='video' size={20} color={'white'}  />
+                <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor:Colors.green, padding: 10, margin: 5}}>
+                  <Image source={Images.icon_phone} style={{width: 16, height: 16, resizeMode: 'contain'}}/>
                 </View>
-                <Text style={{color: 'black'}}>Call</Text>
+                <Text style={{color: 'black'}}>Audio</Text>
               </View>
             </View>
 
@@ -91,7 +105,7 @@ class ContactListItem  extends Component {
               size={15}
               style={{ container: [styles.status, {backgroundColor: statusColor}] }}
             >
-              <Image source={{ uri: this.props.picture.large}} style={styles.photo} />
+              {/* <Image source={{ uri: this.props.picture.large}} style={styles.photo} /> */}
             </Badge>
 
             <View style={styles.container1}>

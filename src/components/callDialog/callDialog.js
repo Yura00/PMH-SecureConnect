@@ -25,22 +25,33 @@ class CallDialog  extends Component {
     }
 
     return (
-        <Dialog
-            visible={this.state.showDialog}
-            title="Custom Dialog"
-            onTouchOutside={() => this.setState({showDialog: false})}
-            contentStyle={{ justifyContent: 'center', alignItems: 'center', }}
-            animationType="fade">
-            <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'lightseagreen'}]}>
-              <MaterialCommunityIcons name='phone-plus' size={30} color={'white'} style={styles.rightSwipeItemIcon} />
-              <Text style={styles.rightSwipeItemText}>Video</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'orange'}]}>
-              <MaterialCommunityIcons name='video' size={30} color={'white'} style={styles.rightSwipeItemIcon} />
-              <Text style={styles.rightSwipeItemText}>Audio</Text>
-            </TouchableOpacity>
-            <Button onPress={() => this.setState({showDialog: false})} style={{ marginTop: 10 }} title="CANCEL" />
-        </Dialog>
+      <Dialog
+        visible={this.state.showDialog}
+        onTouchOutside={() => this.setState({showDialog: false})}
+        contentStyle={{ justifyContent: 'center', alignItems: 'center', padding: 0, backgroundColor: 'white', borderRadius: 5 }}
+        animationType="fade"
+      >
+
+        <View style={{flexDirection: 'row', marginBottom: 10}}>
+          <View style={{flexDirection: 'column',flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor: Colors.orange, padding: 8, margin: 5}}>
+              <Image source={Images.icon_camera} style={{width: 20, height: 20, resizeMode: 'contain'}}/>
+            </View>
+            <Text style={{color: 'black'}}>Video</Text>
+          </View>
+          <View style={{flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor:Colors.green, padding: 10, margin: 5}}>
+              <Image source={Images.icon_phone} style={{width: 16, height: 16, resizeMode: 'contain'}}/>
+            </View>
+            <Text style={{color: 'black'}}>Audio</Text>
+          </View>
+        </View>
+
+        <View style={{marginTop: 10, alignSelf: 'stretch', borderTopColor: 'lightgray', borderTopWidth: 1}}>
+          <Button onPress={() => this.setState({showDialog: !this.state.showDialog})} style={{ marginTop: 10, flex: 1 }} title="Cancel" />
+        </View>
+
+      </Dialog>
     );
   }
 }

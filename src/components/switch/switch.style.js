@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 	container: {
-		position: 'absolute',
+		// position: 'absolute',
 		// bottom: 20,
 		flexDirection: 'row',
 		justifyContent: 'center',

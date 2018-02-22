@@ -12,9 +12,14 @@ class TopBar  extends Component {
   }
 
   render() {
+    let height = 35
+    if (this.props.onDrawer) {
+      height = 80
+    }
     return (
-    <View style={styles.container}>
+      <View style={[styles.container, {height: height}]}>
         <View style={styles.background} />
+        <View style={styles.paddingTop} />
         <View style={styles.content}>
           {this.props.children}
         </View>

@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         alignItems: 'center',
-        flexDirection: 'row',
+        flexDirection: 'column',
         zIndex: 3,
         alignSelf: 'stretch',
         justifyContent: 'center',
@@ -22,8 +22,11 @@ export default StyleSheet.create({
         zIndex: 1,
         backgroundColor: '#0f5fad'
       },
+      paddingTop: {
+        flex: 1
+      },
       content: {
-        bottom: 5,
+        marginBottom: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

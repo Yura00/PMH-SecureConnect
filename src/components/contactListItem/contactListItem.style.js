@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from '../../themes'
 
 export default StyleSheet.create({
     container: {
@@ -20,33 +21,6 @@ export default StyleSheet.create({
     container2: {
         flexDirection: 'column',
         alignItems: 'center',
-    },
-    leftSwipeItem: {
-        flex: 1,
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        paddingRight: 23
-    },
-    leftSwipeItemIcon: {
-        paddingRight: 5,
-        paddingTop: 5
-    },
-    leftSwipeItemText: {
-        color: 'white',
-        fontSize: 13
-    },
-    rightSwipeItem: {
-        flex: 1,
-        justifyContent: 'center',
-        paddingLeft: 10
-    },
-    rightSwipeItemIcon: {
-        paddingLeft: 20,
-        paddingTop: 5
-    },
-    rightSwipeItemText: {
-        color: 'white',
-        fontSize: 13
     },
     photo: {
         height: 50,
