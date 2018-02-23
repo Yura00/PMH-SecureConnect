@@ -2,7 +2,9 @@ import { Colors } from "../../themes";
 
   export default {
     container: {
-      flex: 1
+      flex: 1,
+      alignItems: 'center',
+        justifyContent: 'center'
     },
     profile: {
         flex: 2,
@@ -18,6 +20,7 @@ import { Colors } from "../../themes";
     },
     footerContainer: {
         flex: 1.7,
+        width: '80%',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -50,9 +53,5 @@ import { Colors } from "../../themes";
     },
     pageName: {
         fontSize: 16
-    },
-    button: {
-        backgroundColor: Colors.default,
-        marginBottom: 30
     }
   };

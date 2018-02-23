@@ -1,15 +1,6 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  title: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: 'white'
-  },
-  container: {
-    flex: 1,
-    position: 'relative'
-  },
   listView: {
     flex: 1,
     top: 0,

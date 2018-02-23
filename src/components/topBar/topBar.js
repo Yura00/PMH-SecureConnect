@@ -14,9 +14,11 @@ class TopBar  extends Component {
   }
 
   render() {
-    let height = 35
+    let height = 20
     if (this.props.onDrawer) {
       height = 80
+    } else if (this.props.hasContent) {
+      height = 35
     }
     return (
       <View style={[styles.container, {height: height}]}>

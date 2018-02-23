@@ -1,9 +1,6 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  container: {
-    flex: 1
-  },
   topBar: {
     flex: 1,
     justifyContent: 'center',
@@ -33,21 +30,12 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: 'white'
-  },
   avatar: {
     position: 'absolute',
     height: 100,
     width: 100,
     borderRadius: 50,
     bottom: -40
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column'
   },
   topContainer: {
     flex: 0.8,

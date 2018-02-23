@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { View, Text, ListView } from 'react-native'
+import { GlobalStyle } from '../../themes'
 import styles from './contacts.style'
 
 import ActionButton from 'react-native-action-button'
@@ -95,8 +96,8 @@ class Contacts  extends Component {
   render() {
     const listData = formatData(data)
     return (
-      <View style={styles.container}>
-        <TopBar>
+      <View style={GlobalStyle.pageContainer}>
+        <TopBar hasContent>
           <Switch 
             value={false}
             onValueChange={(val) => console.log(val)}

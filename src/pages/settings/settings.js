@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements'
 import { TopBar } from '../../components'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { GlobalStyle } from '../../themes'
 import styles from './settings.style'
 
 class Settings  extends Component {
@@ -16,9 +17,9 @@ class Settings  extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={GlobalStyle.pageContainer}>
         <TopBar onDrawer navigation={this.props.navigation}>
-            <Text style={styles.title}> Settings </Text>
+            <Text style={GlobalStyle.pageTitle}> Settings </Text>
         </TopBar>
 
         <View style={styles.mainContainer}>

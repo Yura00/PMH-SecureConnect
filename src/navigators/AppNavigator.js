@@ -19,7 +19,10 @@ export const AppNavigator = StackNavigator(
     initialRouteName: 'RootDrawerNavigator',//test
     navigationOptions: {
       gesturesEnabled: false,
-      header: null
+      header: null,
+      headerStyle: {
+        borderBottomWidth: 0,
+    },
     }
   }
 );

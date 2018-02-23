@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ListView } from 'react-native';
 import { TopBar, ChatListItem, Switch } from '../../components'
+import { GlobalStyle } from '../../themes'
 import styles from './notifications.style'
 
 import ActionButton from 'react-native-action-button'
@@ -17,8 +18,8 @@ class Notifications  extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TopBar>
+      <View style={GlobalStyle.pageContainer}>
+        <TopBar hasContent>
           <Switch 
             value={false}
             onValueChange={(val) => console.log(val)}

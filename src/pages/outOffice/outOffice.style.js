@@ -1,15 +1,6 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  title: {
-    fontSize: 17,
-    fontWeight: '600',
-    color: 'white'
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column'
-  },
   topContainer: {
     flex: 0.8,
     justifyContent: 'center',
@@ -32,6 +23,7 @@ export default StyleSheet.create({
   },
   mainContainer: {
     flex: 1,
+    width: '90%',
     flexDirection: 'column',
     margin: 20
   },
@@ -56,7 +48,11 @@ export default StyleSheet.create({
   },
   footerContainer: {
     flex: 0.5,
-    flexDirection: 'column',
-    margin: 20
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    width: '70%'
   }
 });

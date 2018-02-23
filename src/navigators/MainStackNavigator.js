@@ -24,6 +24,7 @@ export const MainStackNavigator = StackNavigator(
         gesturesEnabled: false,
         headerStyle: {
           backgroundColor: '#0f5fad',
+          borderBottomWidth: 0
         },
         headerTintColor: 'white'
       }

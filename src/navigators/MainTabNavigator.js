@@ -2,7 +2,7 @@ import React from 'react';
 import { TabNavigator, Icon } from 'react-navigation'
 import { StyleSheet, Image } from 'react-native'
 import { Contacts, Chats, Notifications, Channels} from '../pages'
-import { Images, Colors } from '../themes'
+import { Images, Colors, GlobalStyle } from '../themes'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const MainTabNavigator = TabNavigator ({
@@ -11,6 +11,7 @@ const MainTabNavigator = TabNavigator ({
       path: '/',
       navigationOptions: {
         title: 'Contacts',
+        headerTitleStyle: GlobalStyle.pageTitle,
         tabBarLabel: 'Contacts',
         tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_contacts} style={[styles.icon, { tintColor: tintColor }]} />)}
       }
@@ -19,6 +20,8 @@ const MainTabNavigator = TabNavigator ({
       screen: Chats,
       path: '/chats',
       navigationOptions: {
+        title: 'Chats',
+        headerTitleStyle: [GlobalStyle.pageTitle, {marginTop: 30}],
         tabBarLabel: 'chats',
         tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_chats} style={[styles.icon, { tintColor: tintColor }]} />)}
       }
@@ -26,6 +29,7 @@ const MainTabNavigator = TabNavigator ({
     Notifications: {
       screen: Notifications,
       navigationOptions: {
+        headerTitleStyle: GlobalStyle.pageTitle,
         title: 'Notifications',
         tabBarLabel: 'Notifications',
         tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_notifications} style={[styles.icon, { tintColor: tintColor }]} />)}
@@ -34,6 +38,8 @@ const MainTabNavigator = TabNavigator ({
     Channels: {
       screen: Channels,
       navigationOptions: {
+        title: 'Channels',
+        headerTitleStyle: [GlobalStyle.pageTitle, {marginTop: 30}],
         tabBarLabel: 'Channels',
         tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_channels} style={[styles.icon1, { tintColor: tintColor }]} />)}
       }

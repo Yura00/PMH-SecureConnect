@@ -3,7 +3,7 @@ import { Colors } from "../../themes";
   export default {
     container: {
         height: 44,
-        width: 200,
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 22,

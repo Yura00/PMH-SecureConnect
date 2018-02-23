@@ -2,7 +2,8 @@ import { Colors } from "../../themes";
 
   export default {
     container: {
-      padding: 5
+      padding: 5,
+      // top: 13
     },
     icon: {
         width: 20,

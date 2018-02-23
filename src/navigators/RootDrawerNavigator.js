@@ -3,6 +3,7 @@ import { DrawerNavigator } from 'react-navigation'
 import MainStackNavigator from './MainStackNavigator'
 import { FileSharing, ChangeBackup, EditProfile, OutOffice, Support, Settings } from '../pages'
 import { SideMenu } from '../components'
+import { Colors } from '../themes'
 
 const RootDrawerNavigator = DrawerNavigator(
     {
@@ -33,7 +34,7 @@ const RootDrawerNavigator = DrawerNavigator(
         drawerWidth: 250,
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#0f5fad',
+                backgroundColor: Colors.default,
             },
             headerTintColor: 'white'
           }

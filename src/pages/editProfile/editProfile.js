@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import { TopBar } from '../../components'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { GlobalStyle } from '../../themes'
 import styles from './editProfile.style'
 import { Images } from '../../themes'
 
@@ -19,14 +20,14 @@ class EditProfile  extends Component {
 
   render() {
     return (
-        <View style={styles.container}>
+        <View style={GlobalStyle.pageContainer}>
           <View style={styles.topBar}>
             <Image source={Images.bg_profile_top} style={styles.topBackground} />
             <TouchableOpacity style={styles.drawerContainer} onPress={() => this.props.navigation.navigate('MainStackNavigator')}>
               <MaterialCommunityIcons name='chevron-left' size={30} color={'white'} />
             </TouchableOpacity>
             <View style={styles.titleContent}>
-              <Text style={styles.title}> Edit Profile </Text>
+              <Text style={GlobalStyle.pageTitle}> Edit Profile </Text>
             </View>
             <Image source={Images.img_me} style={styles.avatar} />
           </View>

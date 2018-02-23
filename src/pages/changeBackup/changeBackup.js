@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ListView } from 'react-native';
 import { TopBar, ChatListItem, Switch } from '../../components'
+import { GlobalStyle } from '../../themes'
 import styles from './changeBackup.style'
 
 import ActionButton from 'react-native-action-button'
@@ -17,9 +18,9 @@ class ChangeBackup  extends Component {
 
   render() {
     return (
-        <View style={styles.container}>
+        <View style={GlobalStyle.pageContainer}>
             <TopBar onDrawer navigation={this.props.navigation}>
-                <Text style={styles.title}> Change Backup </Text>
+                <Text style={GlobalStyle.pageTitle}> Change Backup </Text>
             </TopBar>
             
         </View>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ListView } from 'react-native';
 import { TopBar, ChatListItem } from '../../components'
+import { GlobalStyle } from '../../themes'
 import styles from './channels.style'
 
 import ActionButton from 'react-native-action-button'
@@ -17,10 +18,8 @@ class Channels  extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TopBar>
-          <Text style={styles.title}> Channels </Text>
-        </TopBar>
+      <View style={GlobalStyle.pageContainer}>
+        <TopBar />
         <ListView
           style={styles.listView}
           dataSource={this.state.dataSource}

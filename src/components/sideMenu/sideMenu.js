@@ -21,7 +21,7 @@ class SideMenu extends Component {
         <View style={styles.container}>
           <View style={styles.profile}>
             <Badge
-              size={23}
+              size={20}
               style={{ container: [styles.status, {backgroundColor: Colors.online}] }}
             >
               <Image source={Images.img_me} style={styles.photo} />

@@ -105,7 +105,7 @@ class ContactListItem  extends Component {
               size={15}
               style={{ container: [styles.status, {backgroundColor: statusColor}] }}
             >
-              {/* <Image source={{ uri: this.props.picture.large}} style={styles.photo} /> */}
+              <Image source={{ uri: this.props.picture.large}} style={styles.photo} />
             </Badge>
 
             <View style={styles.container1}>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements'
-import { TopBar } from '../../components'
+import { TopBar, ShadowButton } from '../../components'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { GlobalStyle } from '../../themes'
 import styles from './support.style'
 
 class Support  extends Component {
@@ -16,9 +17,9 @@ class Support  extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={GlobalStyle.pageContainer}>
         <TopBar onDrawer navigation={this.props.navigation}>
-            <Text style={styles.title}> Support </Text>
+            <Text style={GlobalStyle.pageTitle}> Support </Text>
         </TopBar>
 
         <View style={styles.mainContainer}>
@@ -38,7 +39,9 @@ class Support  extends Component {
         </View>
 
         <View style={styles.footerContainer}>
-          <Button style={styles.button} large title='Submit' />
+          <View style={styles.buttonContainer}>
+            <ShadowButton style={styles.button} label='Submit' />
+          </View>
         </View>
       </View>
     );

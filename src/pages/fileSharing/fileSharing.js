@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { TopBar } from '../../components'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { GlobalStyle } from '../../themes'
 import styles from './fileSharing.style'
 
 class FileSharing  extends Component {
@@ -11,9 +12,9 @@ class FileSharing  extends Component {
 
   render() {
     return (
-        <View style={styles.container}>
+        <View style={GlobalStyle.pageContainer}>
           <TopBar onDrawer navigation={this.props.navigation}>
-              <Text style={styles.title}> File Sharing </Text>
+              <Text style={GlobalStyle.pageTitle}> File Sharing </Text>
           </TopBar>
 
           <View style={styles.topContainer}>

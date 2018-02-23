@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements'
-import { TopBar } from '../../components'
+import { TopBar, ShadowButton } from '../../components'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { GlobalStyle } from '../../themes'
 import styles from './outOffice.style'
 
 class OutOffice  extends Component {
@@ -12,9 +13,9 @@ class OutOffice  extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={GlobalStyle.pageContainer}>
         <TopBar onDrawer navigation={this.props.navigation}>
-            <Text style={styles.title}> Out of Office </Text>
+            <Text style={GlobalStyle.pageTitle}> Out of Office </Text>
         </TopBar>
 
         <View style={styles.mainContainer}>
@@ -33,7 +34,9 @@ class OutOffice  extends Component {
         </View>
 
         <View style={styles.footerContainer}>
-          <Button style={styles.button} large title='Save' />
+          <View style={styles.buttonContainer}>
+            <ShadowButton style={styles.button} label='Save' />
+          </View>
         </View>
       </View>
     );
