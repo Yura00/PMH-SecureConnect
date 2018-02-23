@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Swipeable from 'react-native-swipeable'
-
+import { LeftSwipeItem, RightSwipeItem, CallDialog } from '../'
 import styles from './chatListItem.style'
-import { Colors } from '../../themes'
+import { Colors, Images } from '../../themes'
 
 class ChatListItem  extends Component {
   constructor(props) {
@@ -25,26 +25,33 @@ class ChatListItem  extends Component {
     return (
       <ThemeProvider>
         <Swipeable
-          leftButtonWidth={100}
-          rightButtonWidth={100}
+          leftButtonWidth={80}
+          rightButtonWidth={80}
           leftButtons={[
-            <TouchableOpacity style={[styles.leftSwipeItem, {backgroundColor: 'papayawhip'}]}>
-              <Text>Delete</Text>
-            </TouchableOpacity>,
-            <TouchableOpacity style={[styles.leftSwipeItem, {backgroundColor: 'olivedrab'}]}>
-              <Text>Pin</Text>
-            </TouchableOpacity>
+            <LeftSwipeItem 
+              source={Images.icon_pin} 
+              label='Pin' 
+              size={80}
+              backgroundColor={Colors.lightgreen}
+              onPress={() => console.log('Pin clicked')}
+            />,
+            <LeftSwipeItem 
+              source={Images.icon_delete} 
+              label='Delete' 
+              size={80}
+              backgroundColor={Colors.red}
+              onPress={() => console.log('Delete clicked')}
+            />
           ]}
           rightButtons={[
-            <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'lightseagreen'}]}>
-              <Text>1</Text>
-            </TouchableOpacity>,
-            <TouchableOpacity style={[styles.rightSwipeItem, {backgroundColor: 'orchid'}]}>
-              <Text>2</Text>
-            </TouchableOpacity>
+            <RightSwipeItem 
+              source={Images.icon_user_plus} 
+              label='Add' 
+              size={80}
+              backgroundColor={Colors.default}
+              onPress={() => console.log('Add clicked')}
+            />
           ]}
-          // onLeftButtonsOpenRelease={onOpen}
-          // onLeftButtonsCloseRelease={onClose}
         >
           <View style={styles.container}>
 
@@ -72,7 +79,7 @@ class ChatListItem  extends Component {
             </View>
 
             <View style={styles.container2}>
-              <MaterialIcons name='chevron-right' size={30} color={'gray'} />
+              <MaterialIcons name='chevron-right' size={30} color={'lightgray'} />
             </View>
 
           </View>

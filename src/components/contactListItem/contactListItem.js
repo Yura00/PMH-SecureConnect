@@ -40,6 +40,7 @@ class ContactListItem  extends Component {
             <LeftSwipeItem 
               source={Images.icon_delete} 
               label='Delete' 
+              size={90}
               backgroundColor={Colors.red}
               onPress={() => console.log('Delete clicked')}
             />
@@ -48,18 +49,21 @@ class ContactListItem  extends Component {
             <RightSwipeItem 
               source={Images.icon_emergency} 
               label='Emergency' 
+              size={90}
               backgroundColor={Colors.darkred}
               onPress={() => console.log('Emergency clicked')}
             />,
             <RightSwipeItem 
               source={Images.icon_comment_left} 
               label='Chat' 
+              size={90}
               backgroundColor={Colors.orange}
               onPress={() => console.log('Chat clicked')}
             />,
             <RightSwipeItem 
               source={Images.icon_phone} 
               label='Call' 
+              size={90}
               backgroundColor={Colors.green}
               onPress={() => this.setState({showDialog: true})}
             />
@@ -121,7 +125,7 @@ class ContactListItem  extends Component {
             </View>
 
             <View style={styles.container2}>
-              <MaterialIcons name='chevron-right' size={30} color={'gray'} />
+              <MaterialIcons name='chevron-right' size={30} color={'lightgray'} />
             </View>
 
           </TouchableOpacity>

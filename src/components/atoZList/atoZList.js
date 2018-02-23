@@ -95,7 +95,7 @@ export default class AtoZList extends Component {
           />
         </View>
 
-        {this._alphabetInstance}
+        { this.props.visibleAlphabet ? this._alphabetInstance : null}
       </View>
     );
   }

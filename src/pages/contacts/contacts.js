@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { NavigationActions } from 'react-navigation';
-import { View, Text, ListView } from 'react-native'
+import { View, ListView } from 'react-native'
+import { TopBar, AtoZList, ContactListSection, ContactListItem, Switch } from '../../components/'
 import { GlobalStyle } from '../../themes'
 import styles from './contacts.style'
 
-import ActionButton from 'react-native-action-button'
 import data from '../mockData'
-
-import { TopBar, AtoZList, ContactListSection, ContactListItem, Switch } from '../../components/'
 
 const formatData = function(data) {
   // We're sorting by alphabetically so we need the alphabet
@@ -61,28 +58,6 @@ const formatData = function(data) {
   return result
 }
 
-const atozdata= {
-  "A": [
-    {
-      "name": "Anh Tuan Nguyen",
-      "age": 28
-    },
-    {
-      "name": "An Nguyen",
-      "age": 20
-    },
-  ],
-  "Z": [
-    {
-      "name": "Zue Dang",
-      "age": 22
-    },
-    {
-      "name": "Zoom Jane",
-      "age": 30
-    },
-  ]
-}
 class Contacts  extends Component {
   constructor(props) {
     super(props);
@@ -108,16 +83,13 @@ class Contacts  extends Component {
           />
         </TopBar>
         <AtoZList
+          visibleAlphabet
           style={styles.listView}
           sectionHeaderHeight={0}
           cellHeight={60}
           data={listData}
           renderCell={(data) => <ContactListItem {...data} onPress={() => this.props.navigation.navigate('Chat', {data: data})}/>}
           renderSection={(data) => <ContactListSection data={data.sectionId}/>}
-        />
-        <ActionButton
-          buttonColor="blue"
-          onPress={() => { console.log("hi")}}
         />
       </View>
     );

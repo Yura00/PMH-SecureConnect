@@ -19,7 +19,12 @@ export default StyleSheet.create({
   },
   separator: {
     flex: 1,
+    marginLeft: 50,
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#8E8E8E',
+    backgroundColor: 'lightgray',
+  },
+  actionButtonIcon: {
+    width: 20,
+    height: 20
   }
 });

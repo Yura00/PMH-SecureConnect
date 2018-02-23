@@ -7,8 +7,9 @@ class LeftSwipeItem  extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            iconWidth: 45,
-            textWidth: 45
+            size: props.size,
+            iconWidth: props.size / 2,
+            textWidth: props.size / 2
         }
       }
 
@@ -21,11 +22,11 @@ class LeftSwipeItem  extends Component {
             <Image 
             onLayout={(event)=>this.setState({iconWidth: event.nativeEvent.layout.width})}
             source={this.props.source}
-            style={[styles.icon, {marginRight: (45 - this.state.iconWidth / 2)}]}
+            style={[styles.icon, {marginRight: ((this.state.size - this.state.iconWidth) / 2)}]}
             />
             <Text
             onLayout={(event)=>this.setState({textWidth: event.nativeEvent.layout.width})}
-            style={[styles.text, {marginRight: (45 - this.state.textWidth / 2)}]}
+            style={[styles.text, {marginRight: ((this.state.size - this.state.textWidth) / 2)}]}
             >
                 {this.props.label}
             </Text>

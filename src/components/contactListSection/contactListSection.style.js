@@ -2,13 +2,14 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     container: {
-        top: 40,
-        height: 0,
-        justifyContent: 'center',
-        backgroundColor: '#eee',
-        paddingLeft: 10,
+      height: 1,
+      justifyContent: 'center',
+      backgroundColor: '#eee',
+      marginLeft: 50,
     },
     sectionText: {
+      top: 40,
+      left: -40,
       fontSize: 15,
       color: 'gray'
     },
