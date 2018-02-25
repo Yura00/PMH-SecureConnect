@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { Colors } from '../../themes'
 
 export default StyleSheet.create({
   text: {
@@ -16,12 +17,20 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   listItem: {
-    padding: 10,
+    height: 45,
+    paddingLeft: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     borderTopColor: 'lightgray',
     borderTopWidth: 1,
+  },
+  iconColor: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    marginRight: 10,
+    backgroundColor: Colors.default
   },
   name: {
     flex: 1,

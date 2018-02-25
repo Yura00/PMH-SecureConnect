@@ -1,5 +1,8 @@
 const Colors = {
     default: '#0f5fad',
+    navy: '#2d3e50',
+    turquoise: '#16a086',
+    
     online: '#25c700',
     away: '#ffae00',
     disturb: '#ff0000',
