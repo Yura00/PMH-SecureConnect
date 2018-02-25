@@ -7,6 +7,8 @@ const Images = {
     icon_tab_chats: require('../assets/icon_tab_chats-min.png'),
     icon_tab_notifications: require('../assets/icon_tab_notifications-min.png'),
     icon_tab_channels: require('../assets/icon_tab_channels-min.png'),
+    icon_channel: require('../assets/icon_channel-min.png'),
+    icon_new_group: require('../assets/icon_new_group-min.png'),
     bg_profile_top: require('../assets/bg_profile_top-min.png'),
     icon_delete: require('../assets/icon_delete-min.png'),
     icon_pin: require('../assets/icon_pin-min.png'),

@@ -12,6 +12,10 @@ class ChatListItem  extends Component {
     super(props);
   }
 
+  onPress () {
+    this.props.onPress ? this.props.onPress() : {}
+  }
+
   render() {
     var statusColor = Colors.offline
     if (this.props.status === 'online') {
@@ -53,7 +57,7 @@ class ChatListItem  extends Component {
             />
           ]}
         >
-          <View style={styles.container}>
+          <TouchableOpacity style={styles.container} onPress={() => this.onPress()}>
 
             <Badge
               size={15}
@@ -82,7 +86,7 @@ class ChatListItem  extends Component {
               <MaterialIcons name='chevron-right' size={30} color={'lightgray'} />
             </View>
 
-          </View>
+          </TouchableOpacity>
         </Swipeable>
       </ThemeProvider>
     );

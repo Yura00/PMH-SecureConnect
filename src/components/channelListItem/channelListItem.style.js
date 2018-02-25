@@ -33,10 +33,19 @@ export default StyleSheet.create({
         justifyContent: 'center',
         paddingLeft: 20
     },
+    iconNewGroupContainer: {
+      height: 50,
+      width: 50,
+      borderRadius: 25,
+      marginLeft: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: Colors.lightblue
+    },
     photo: {
-        height: 50,
-        width: 50,
-        borderRadius: 25,
+      height: 25,
+      width: 25,
+      resizeMode: 'contain'
     },
     status: {
         bottom: -2, 

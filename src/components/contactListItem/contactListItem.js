@@ -2,19 +2,27 @@ import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Swipeable from 'react-native-swipeable'
 import styles from './contactListItem.style'
 import { Colors, Images } from '../../themes'
 import { Dialog } from 'react-native-simple-dialogs'
-import { LeftSwipeItem, RightSwipeItem, CallDialog } from '../'
+import { LeftSwipeItem, RightSwipeItem, CallDialog, Checkbox } from '../'
 
 class ContactListItem  extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDialog: false
+      showDialog: false,
+      isChecked: false
     }
+  }
+
+  onPress () {
+    if (this.props.fromNewGroup) {
+      this.setState({ isChecked: !this.state.isChecked })
+    }
+     
+    this.props.onPress ? this.props.onPress() : {}
   }
 
   measureLeft (event) {
@@ -68,8 +76,6 @@ class ContactListItem  extends Component {
               onPress={() => this.setState({showDialog: true})}
             />
           ]}
-          // onLeftButtonsOpenRelease={onOpen}
-          // onLeftButtonsCloseRelease={onClose}
         >
 
         {/* <CallDialog showDialog={this.state.showDialog}/> */}
@@ -80,7 +86,6 @@ class ContactListItem  extends Component {
             contentStyle={{ justifyContent: 'center', alignItems: 'center', padding: 0, backgroundColor: 'white', borderRadius: 5 }}
             animationType="fade"
           >
-
             <View style={{flexDirection: 'row', marginBottom: 10}}>
               <View style={{flexDirection: 'column',flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor: Colors.orange, padding: 8, margin: 5}}>
@@ -95,15 +100,13 @@ class ContactListItem  extends Component {
                 <Text style={{color: 'black'}}>Audio</Text>
               </View>
             </View>
-
             <View style={{marginTop: 10, alignSelf: 'stretch', borderTopColor: 'lightgray', borderTopWidth: 1}}>
               <Button onPress={() => this.setState({showDialog: !this.state.showDialog})} style={{ marginTop: 10, flex: 1 }} title="Cancel" />
             </View>
-
           </Dialog>
 
 
-          <TouchableOpacity style={styles.container} onPress={() => this.props.onPress ? this.props.onPress() : {}}>
+          <TouchableOpacity style={styles.container} onPress={() => this.onPress()}>
 
             <Badge
               size={15}
@@ -125,7 +128,15 @@ class ContactListItem  extends Component {
             </View>
 
             <View style={styles.container2}>
-              <MaterialIcons name='chevron-right' size={30} color={'lightgray'} />
+            {
+              this.props.fromNewGroup 
+              ? <Checkbox
+                  style={{flex: 1, padding: 10}}
+                  onClick={() => this.setState({ isChecked: !this.state.isChecked })}
+                  isChecked={this.state.isChecked}
+                />
+              : <MaterialIcons name='chevron-right' size={30} color={'lightgray'} />
+            }
             </View>
 
           </TouchableOpacity>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Dialog } from 'react-native-simple-dialogs'
 
 import styles from './callDialog.style'

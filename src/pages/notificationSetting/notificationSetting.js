@@ -4,11 +4,11 @@ import { Button } from 'react-native-elements'
 import { TopBar } from '../../components'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { GlobalStyle } from '../../themes'
-import styles from './settings.style'
+import styles from './notificationSetting.style'
 
-class Settings extends Component {
+class NotificationSetting extends Component {
   static navigationOptions = ({ navigation }) => ({
-    headerLeft: (<TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.navigate('MainStackNavigator')}>
+    headerLeft: (<TouchableOpacity style={styles.backButtonContainer} onPress={() => navigation.goBack()}>
       <MaterialCommunityIcons name='chevron-left' size={30} color={'white'} />
       </TouchableOpacity>)
   })
@@ -26,18 +26,18 @@ class Settings extends Component {
         <TopBar />
 
         <View style={styles.mainContainer}>
-          <TouchableOpacity style={styles.chooseContact} onPress={() => this.props.navigation.navigate('ThemeSetting', {data: data})}>
+          {/* <TouchableOpacity style={styles.chooseContact}>
             <Text style={styles.text}> Theme </Text>
             <MaterialCommunityIcons name='chevron-right' size={25} color={'gray'} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.chooseContact} onPress={() => this.props.navigation.navigate('NotificationSetting', {data: data})}>
+          <TouchableOpacity style={styles.chooseContact}>
             <Text style={styles.text}> Notifications </Text>
             <MaterialCommunityIcons name='chevron-right' size={25} color={'gray'} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     );
   }
 }
 
-export default Settings;
+export default NotificationSetting;

@@ -106,6 +106,7 @@ export default class FixedHeightWindowedListView extends Component {
     rows.push(<View key="sp-bot" style={{height: spacerBottomHeight}} />);
 
     return (
+      // const { paddingTop } = this.props.noHeader ? 0 : 50
       <ScrollView
         scrollEventThrottle={50}
         removeClippedSubviews={this.props.numToRenderAhead === 0 ? false : true}
@@ -113,7 +114,7 @@ export default class FixedHeightWindowedListView extends Component {
         {...this.props}
         ref={(ref) => { this.scrollRef = ref; }}
         onScroll={this.__onScroll}>
-        <View style={{height: 50}} />
+        <View style={{height: this.props.noHeader ? 0 : 50}} />
         {rows}
       </ScrollView>
     );

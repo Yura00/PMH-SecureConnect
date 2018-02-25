@@ -1,7 +1,8 @@
 import React from 'react'
 import { DrawerNavigator } from 'react-navigation'
 import MainStackNavigator from './MainStackNavigator'
-import { FileSharing, ChangeBackup, EditProfile, OutOffice, Support, Settings } from '../pages'
+import SettingsStacknavigator from './SettingsStacknavigator'
+import { FileSharing, ChangeBackup, EditProfile, OutOffice, Support } from '../pages'
 import { SideMenu } from '../components'
 import { Colors } from '../themes'
 
@@ -25,8 +26,8 @@ const RootDrawerNavigator = DrawerNavigator(
         Support: {
             screen: Support
         },
-        Settings: {
-            screen: Settings
+        SettingsStacknavigator: {
+            screen: SettingsStacknavigator
         }
     },
     {

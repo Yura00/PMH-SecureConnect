@@ -81,6 +81,7 @@ export default class AtoZList extends Component {
         <View style={styles.container}>
           
           <FixedHeightWindowedListView
+            {...this.props}
             ref={view => this._listView = view}
             dataSource={this.state.dataSource}
             renderCell={this.props.renderCell}
@@ -110,9 +111,6 @@ const styles = StyleSheet.create({
     flex: 1,
     // marginTop: 50,
     backgroundColor: '#fff',
-  },
-  padding: {
-    height: 50
   },
   alphabetSidebar: {
     position: 'absolute',

@@ -13,15 +13,6 @@ class ChannelListItem  extends Component {
   }
 
   render() {
-    // var statusColor = Colors.offline
-    // if (this.props.status === 'online') {
-    //   statusColor = Colors.online
-    // } else if (this.props.status === 'away') {
-    //   statusColor = Colors.away
-    // } else if (this.props.status === 'disturb') {
-    //   statusColor = Colors.disturb
-    // }
-
     return (
       <ThemeProvider>
         <Swipeable
@@ -44,7 +35,10 @@ class ChannelListItem  extends Component {
           ]}
         >
         <View style={styles.container}>
-            <Image source={Images.img_me} style={styles.photo} />
+          <View style={styles.iconNewGroupContainer}>
+            <Image source={Images.icon_channel} style={styles.photo} />
+          </View>
+            {/* <Image source={Images.icon_channel} style={styles.photo} /> */}
 
             <View style={styles.container1}>
                 <Text style={styles.name}>

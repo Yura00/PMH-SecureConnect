@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Image, ListView } from 'react-native';
+import { View, Image, Text, ListView, TouchableOpacity } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { AtoZList, ChatListItem, TopBar } from '../../components'
 import { Images, Colors, GlobalStyle } from '../../themes'
-import styles from './chats.style'
+import styles from './selectContact.style'
 
 import ActionButton from 'react-native-action-button'
 import data from '../mockData'
@@ -59,7 +60,12 @@ const formatData = function(data) {
   return result
 }
 
-class Chats  extends Component {
+class SelectContact  extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    headerLeft: (<TouchableOpacity style={styles.backButtonContainer} onPress={() => {navigation.goBack()}}>
+      <MaterialCommunityIcons name='chevron-left' size={30} color={'white'} />
+      </TouchableOpacity>)
+  })
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -73,13 +79,19 @@ class Chats  extends Component {
     return (
       <View style={GlobalStyle.pageContainer}>
         <TopBar />
-        {/* <ListView
-          style={styles.listView}
-          dataSource={this.state.dataSource}
-          renderRow={(data) => <ChatListItem {...data} />}
-          renderSeparator={(sectionId, rowId) => <View style={styles.separator} />}
-        /> */}
+        <TouchableOpacity style={styles.newGroupContainer} onPress={() => this.props.navigation.navigate('NewGroup')}>
+          <View style={styles.iconNewGroupContainer}>
+            <Image source={Images.icon_new_group} style={styles.photo} />
+          </View>
+
+          <View style={styles.container1}>
+            <Text style={styles.name}>
+              New Group
+            </Text>
+          </View>
+        </TouchableOpacity>
         <AtoZList
+          noHeader
           style={styles.listView}
           sectionHeaderHeight={0}
           cellHeight={60}
@@ -87,17 +99,10 @@ class Chats  extends Component {
           renderCell={(data) => <ChatListItem {...data} onPress={() => this.props.navigation.navigate('Chat', {data: data})}/>}
           renderSection={(data) => <View style={styles.separator} />}
         />
-        <ActionButton 
-          buttonColor={Colors.lightblue}
-          renderIcon={() => <Image source={Images.icon_comment_left} style={styles.actionButtonIcon} />}
-          // onPress={() => this.props.navigation.navigate('NewGroup')}
-          onPress={() => this.props.navigation.navigate('SelectContact')}
-        />
-          
       </View>
       
     );
   }
 }
 
-export default Chats;
+export default SelectContact;
