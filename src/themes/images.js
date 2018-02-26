@@ -1,6 +1,10 @@
 const Images = {
     img_me: require('../assets/img_me.jpg'),
     logo: require('../assets/logo-min.png'),
+    bg_profile: require('../assets/bg_profile-min.png'),
+    bg_login: require('../assets/bg_login-min.png'),
+    icon_username: require('../assets/icon_username-min.png'),
+    icon_password: require('../assets/icon_password-min.png'),
     icon_drawer: require('../assets/icon_drawer-min.png'),
     icon_search: require('../assets/icon_search-min.png'),
     icon_tab_contacts: require('../assets/icon_tab_contacts-min.png'),
@@ -9,7 +13,6 @@ const Images = {
     icon_tab_channels: require('../assets/icon_tab_channels-min.png'),
     icon_channel: require('../assets/icon_channel-min.png'),
     icon_new_group: require('../assets/icon_new_group-min.png'),
-    bg_profile_top: require('../assets/bg_profile_top-min.png'),
     icon_delete: require('../assets/icon_delete-min.png'),
     icon_pin: require('../assets/icon_pin-min.png'),
     icon_pen: require('../assets/icon_pen-min.png'),

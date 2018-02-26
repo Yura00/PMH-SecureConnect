@@ -22,7 +22,7 @@ class EditProfile  extends Component {
     return (
         <View style={GlobalStyle.pageContainer}>
           <View style={styles.topBar}>
-            <Image source={Images.bg_profile_top} style={styles.topBackground} />
+            <Image source={Images.bg_profile} style={styles.topBackground} />
             <TouchableOpacity style={styles.drawerContainer} onPress={() => this.props.navigation.navigate('MainStackNavigator')}>
               <MaterialCommunityIcons name='chevron-left' size={30} color={'white'} />
             </TouchableOpacity>

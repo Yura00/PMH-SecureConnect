@@ -15,6 +15,15 @@ class SideMenu extends Component {
     this.props.navigation.dispatch(navigateAction);
   }
 
+  logout = () => {
+    const navigateAction = NavigationActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({routeName: 'Login'})],
+      key: null
+    });
+    this.props.navigation.dispatch(navigateAction);
+  }
+
   render () {
     return (
       <ThemeProvider>
@@ -57,7 +66,7 @@ class SideMenu extends Component {
           </View>
           <View style={styles.footerContainer}>
             <View style={styles.seperator} />
-            <ShadowButton label='Logout' />
+            <ShadowButton label='Logout' onPress={this.logout} />
           </View>
         </View>
       </ThemeProvider>

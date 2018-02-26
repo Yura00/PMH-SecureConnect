@@ -1,10 +1,12 @@
 import React from 'react'
-import { TouchableHighlight, View, Text, StyleSheet, TextInput } from 'react-native'
+import { TouchableOpacity, KeyboardAvoidingView, View, Text, Image, TextInput, Alert, Switch } from 'react-native'
+import { LoginInput, ShadowButton } from '../../components'
 import Swiper from 'react-native-swiper'
-
+import Hyperlink from 'react-native-hyperlink'
 import { connect } from 'react-redux'
 import { userLogin } from '../../actions'
 
+import { GlobalStyle, Images, Colors } from '../../themes'
 import styles from './login.style'
 
 class Login extends React.Component {
@@ -12,39 +14,67 @@ class Login extends React.Component {
     super(props)
 
     this.state = { email : '', password: '' }
+    this.state = {
+			showPass: true,
+      press: false,
+      isTouchID: true
+		};
+		this.showPass = this.showPass.bind(this);
+  }
+
+  showPass() {
+    this.state.press === false ? this.setState({ showPass: false, press: true }) :this.setState({ showPass: true, press: false });
+  }
+
+  getStyledLinkText(url) {
+    if (url === 'https://PMH/terms') {
+      return 'Terms of Use'
+    } else if (url === 'https://PMH/privacy') {
+      return 'Privacy Policy'
+    }
+    return null
   }
   
   render() {
     return (
-      <Swiper style={styles.wrapper} showsButtons={false} loop={false}>
-        <View style={styles.slide1}>
-          <Text style={styles.text}>Hello Swiper</Text>
+      <View style={[GlobalStyle.pageContainer, style={ backgroundColor: '#F0F0F0'}]}>
+        <View style={styles.topBar}>
+          <Image source={Images.bg_login} style={styles.topBackground} />
+          <Image source={Images.logo} style={styles.logo} />
         </View>
-        <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
-        </View>
-        <View style={styles.slide3}>
-          <View style={styles.container}>
-            <TextInput
-              placeholder="Type here your email!"
-              onChangeText={(email) => this.setState({email})}
-            />
-            <TextInput
-              placeholder="Type here your password!"
-              onChangeText={(password) => this.setState({password})}
-            />
-            <TouchableHighlight style={styles.button} onPress={() => this.props.userLogin(this.state.email, this.state.password)}>
-              <Text style={styles.buttonText}>Login</Text>
-            </TouchableHighlight>
-            <View style={styles.mainContent}>
-            {
-              this.props.appData.isFetching && <Text>Loading</Text>
-            }
-            <Text>{this.props.appData.message}</Text>
-            </View>
+
+        <View style={styles.mainContent}>
+        <Text style={styles.title}> Welcome to Secure Connect </Text>
+          <KeyboardAvoidingView behavior='padding'
+            style={styles.container}>
+            <LoginInput source={Images.icon_username}
+              placeholder='Username'
+              autoCapitalize={'none'}
+              returnKeyType={'done'}
+              autoCorrect={false} />
+            <LoginInput source={Images.icon_password}
+              secureTextEntry={this.state.showPass}
+              placeholder='Password'
+              returnKeyType={'done'}
+              autoCapitalize={'none'}
+              autoCorrect={false} />
+          </KeyboardAvoidingView>
+          <View style={styles.touchIdContainer}>
+            <Text style={styles.textTouchID}> Setup Touch ID Login </Text>
+            <Switch style={styles.switch} tintColor={Colors.default} value={ this.state.isTouchID } onValueChange={(value) => this.setState({isTouchID: value})} />
           </View>
+          <ShadowButton style={styles.button} label='Log In' onPress={() => this.props.navigation.navigate('RootDrawerNavigator')}/>
+          <Hyperlink
+            linkStyle={styles.hyberLinkText}
+            linkText={ url => this.getStyledLinkText(url) }
+            onPress={ (url, text) => alert(url + ", " + text) }
+          >
+            <Text style={styles.textTerms}>
+              By registering. I have read and agreed to the https://PMH/terms and the https://PMH/privacy
+            </Text>
+          </Hyperlink>
         </View>
-      </Swiper>
+      </View>
     )
   }
 }

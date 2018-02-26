@@ -8,15 +8,16 @@ import { addListener } from '../utils/redux';
 
 export const AppNavigator = StackNavigator(
   {
-    Login: { 
+    Login: {
       screen: Login
     },
-    RootDrawerNavigator: { 
+    RootDrawerNavigator: {
       screen: RootDrawerNavigator
     }
   },
   {
-    initialRouteName: 'RootDrawerNavigator',//test
+    // initialRouteName: 'RootDrawerNavigator',//test
+    initialRouteName: 'Login',
     navigationOptions: {
       gesturesEnabled: false,
       header: null,

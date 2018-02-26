@@ -1,3 +1,4 @@
+export { default as LoginInput } from './loginInput'
 export { default as SideMenu } from './sideMenu'
 export { default as Drawer } from './drawer'
 export { default as ChatListItem } from './chatListItem'
