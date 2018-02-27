@@ -63,14 +63,14 @@ class Login extends React.Component {
             <Text style={styles.textTouchID}> Setup Touch ID Login </Text>
             <Switch style={styles.switch} tintColor={Colors.default} value={ this.state.isTouchID } onValueChange={(value) => this.setState({isTouchID: value})} />
           </View>
-          <ShadowButton style={styles.button} label='Log In' onPress={() => this.props.navigation.navigate('RootDrawerNavigator')}/>
+          <ShadowButton style={styles.button} label='Log In' onPress={() => this.props.navigation.navigate('TouchID')}/>
           <Hyperlink
             linkStyle={styles.hyberLinkText}
             linkText={ url => this.getStyledLinkText(url) }
             onPress={ (url, text) => alert(url + ", " + text) }
           >
             <Text style={styles.textTerms}>
-              By registering. I have read and agreed to the https://PMH/terms and the https://PMH/privacy
+              By registering. I have read and agreed to the {"\n"} https://PMH/terms and the https://PMH/privacy
             </Text>
           </Hyperlink>
         </View>

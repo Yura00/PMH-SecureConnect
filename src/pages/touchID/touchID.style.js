@@ -19,19 +19,27 @@ export default StyleSheet.create({
     height: null,
     resizeMode: 'stretch'
   },
-  logo: {
-    width: 150,
-    height: 150,
+  fingerPrint: {
+    width: 100,
+    height: 100,
     resizeMode: 'contain'
   },
   mainContent: {
-    flex: 1.3,
-    padding: 30
+    flex: 0.3,
+    padding: 40
   },
   title: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 20,
     marginBottom: 20,
+    color: 'white',
+    fontWeight: '500'
+  },
+  description: {
+    textAlign: 'center',
+    fontSize: 15,
+    marginBottom: 50,
+    color: 'white',
   },
   container: {
     flex: 1,
@@ -42,13 +50,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 10
-  },
-  switch: {
-    // backgroundColor: Colors.default
-  },
-  textTouchID: {
-    color: 'gray',
-    fontSize: 13
   },
   hyberLinkText: {
     color: Colors.default,
