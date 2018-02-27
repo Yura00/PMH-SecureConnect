@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
-import { Login, TouchID } from '../pages';
+import { Login, TouchID, VerificationCode } from '../pages';
 import RootDrawerNavigator from './RootDrawerNavigator';
 import { addListener } from '../utils/redux';
 
@@ -14,13 +14,16 @@ export const AppNavigator = StackNavigator(
     TouchID: {
       screen: TouchID
     },
+    VerificationCode: {
+      screen: VerificationCode
+    },
     RootDrawerNavigator: {
       screen: RootDrawerNavigator
     }
   },
   {
     // initialRouteName: 'RootDrawerNavigator',//test
-    initialRouteName: 'Login',
+    initialRouteName: 'VerificationCode',
     navigationOptions: {
       gesturesEnabled: false,
       header: null,

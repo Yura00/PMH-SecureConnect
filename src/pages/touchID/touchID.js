@@ -26,7 +26,7 @@ class TouchID extends React.Component {
         </View>
 
         <View style={styles.mainContent}>
-          <ShadowButton style={styles.button} label='Continue' onPress={() => this.props.navigation.navigate('RootDrawerNavigator')}/>
+          <ShadowButton style={styles.button} label='Continue' onPress={() => this.props.navigation.navigate('VerificationCode')}/>
           <Hyperlink
             linkStyle={styles.hyberLinkText}
             linkText={ url => this.getStyledLinkText(url) }

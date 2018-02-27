@@ -1,5 +1,6 @@
 export { default as Login } from './login'
 export { default as TouchID } from './touchID'
+export { default as VerificationCode } from './verificationCode'
 export { default as Contacts } from './contacts'
 export { default as Chats } from './chats'
 export { default as Notifications } from './notifications'
