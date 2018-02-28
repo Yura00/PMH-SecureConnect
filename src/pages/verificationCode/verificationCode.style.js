@@ -3,30 +3,12 @@ import { StyleSheet } from 'react-native'
 import { Colors } from '../../themes';
 
 export default StyleSheet.create({
-  topBar: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative'
-  },
-  topBackground: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    width: null,
-    height: null,
-    resizeMode: 'stretch'
-  },
-  fingerPrint: {
-    width: 100,
-    height: 100,
-    resizeMode: 'contain'
+  topPadding: {
+    flex: 1
   },
   mainContent: {
-    flex: 0.3,
-    padding: 40
+    flex: 2,
+    padding: 30
   },
   title: {
     textAlign: 'center',

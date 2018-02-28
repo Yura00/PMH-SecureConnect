@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Image } from 'react-native'
 import { StackNavigator } from 'react-navigation';
-import { Chat, NewGroup, SelectContact } from '../pages'
+import { ViewProfile, Chat, NewGroup, SelectContact } from '../pages'
 import MainTabNavigator from './MainTabNavigator'
 import { Images, Colors, GlobalStyle } from '../themes'
 import { Drawer } from '../components'
@@ -14,17 +14,23 @@ export const MainStackNavigator = StackNavigator(
             headerLeft: <Drawer navigation={navigation} />
         })
       },
-      Chat: { 
-        screen: Chat 
+      ViewProfile: {
+        screen: ViewProfile,
+        navigationOptions: {
+          header: null
+        }
       },
-      SelectContact: { 
+      Chat: {
+        screen: Chat
+      },
+      SelectContact: {
         screen: SelectContact,
         navigationOptions: {
           title: 'Select Contact',
           headerTitleStyle: [GlobalStyle.pageTitle, {marginTop: 30}]
         }
       },
-      NewGroup: { 
+      NewGroup: {
         screen: NewGroup,
         navigationOptions: {
           title: 'New Group'

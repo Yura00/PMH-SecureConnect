@@ -88,7 +88,7 @@ class Contacts  extends Component {
           sectionHeaderHeight={0}
           cellHeight={60}
           data={listData}
-          renderCell={(data) => <ContactListItem {...data} onPress={() => this.props.navigation.navigate('Chat', {data: data})}/>}
+          renderCell={(data) => <ContactListItem {...data} onPress={() => this.props.navigation.navigate('ViewProfile', {data: data})}/>}
           renderSection={(data) => <ContactListSection data={data.sectionId}/>}
         />
       </View>

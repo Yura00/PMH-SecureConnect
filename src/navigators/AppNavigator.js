@@ -22,8 +22,8 @@ export const AppNavigator = StackNavigator(
     }
   },
   {
-    // initialRouteName: 'RootDrawerNavigator',//test
-    initialRouteName: 'VerificationCode',
+    initialRouteName: 'RootDrawerNavigator',//test
+    // initialRouteName: 'Login',
     navigationOptions: {
       gesturesEnabled: false,
       header: null,

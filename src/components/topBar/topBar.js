@@ -14,7 +14,7 @@ class TopBar  extends Component {
   }
 
   render() {
-    let height = 20
+    let height = 30
     if (this.props.onDrawer) {
       height = 80
     } else if (this.props.hasContent) {
