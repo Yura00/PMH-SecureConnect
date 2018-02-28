@@ -1,3 +1,5 @@
+// import { PmhChat } from './PmhChat/PmhChat';
+
 export { default as LoginInput } from './loginInput'
 export { default as SideMenu } from './sideMenu'
 export { default as Drawer } from './drawer'
@@ -13,3 +15,4 @@ export { default as LeftSwipeItem } from './leftSwipeItem'
 export { default as RightSwipeItem } from './rightSwipeItem'
 export { default as ShadowButton } from './shadowButton'
 export { default as Checkbox } from './checkbox'
+export * from './PmhChat/PmhChat'

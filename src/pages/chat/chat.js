@@ -3,18 +3,18 @@ import { View, Text, ListView, Icon, TouchableOpacity, Platform } from 'react-na
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import styles from './chat.style'
-
+import { Colors } from '../../themes'
 import data from '../mockData'
 
-import { TopBar } from '../../components/'
+import { TopBar, PmhChat, Actions, Bubble } from '../../components/'
 
 
-import {GiftedChat, Actions, Bubble} from 'react-native-gifted-chat';
+// import {GiftedChat, Actions, Bubble} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
 
 
-  const n_messages = [
+const n_messages = [
   {
     _id: Math.round(Math.random() * 1000000),
     text: 'Yes, and I use Gifted Chat!',
@@ -84,12 +84,11 @@ class Chat extends Component {
     this.renderCustomActions = this.renderCustomActions.bind(this);
     this.renderBubble = this.renderBubble.bind(this);
     this.renderFooter = this.renderFooter.bind(this);
+    this.renderAccessory = this.renderAccessory.bind(this);
     this.onLoadEarlier = this.onLoadEarlier.bind(this);
 
     this._isAlright = null;
   }
-
-  
 
   componentWillMount() {
     this._isMounted = true;
@@ -115,7 +114,7 @@ class Chat extends Component {
       if (this._isMounted === true) {
         this.setState((previousState) => {
           return {
-            messages: GiftedChat.prepend(previousState.messages, o_messages),
+            messages: PmhChat.prepend(previousState.messages, o_messages),
             loadEarlier: false,
             isLoadingEarlier: false,
           };
@@ -127,7 +126,7 @@ class Chat extends Component {
   onSend(messages = []) {
     this.setState((previousState) => {
       return {
-        messages: GiftedChat.append(previousState.messages, messages),
+        messages: PmhChat.append(previousState.messages, messages),
       };
     });
 
@@ -173,7 +172,7 @@ class Chat extends Component {
   onReceive(text) {
     this.setState((previousState) => {
       return {
-        messages: GiftedChat.append(previousState.messages, {
+        messages: PmhChat.append(previousState.messages, {
           _id: Math.round(Math.random() * 1000000),
           text: text,
           createdAt: new Date(),
@@ -216,11 +215,11 @@ class Chat extends Component {
     return (
       <Bubble
         {...props}
-        wrapperStyle={{
-          left: {
-            backgroundColor: '#f0f0f0',
-          }
-        }}
+        // wrapperStyle={{
+        //   left: {
+        //     backgroundColor: Colors.default,
+        //   }
+        // }}
       />
     );
   }
@@ -246,6 +245,34 @@ class Chat extends Component {
     return null;
   }
 
+  renderAccessory(props) {
+    if (Platform.OS === 'ios') {
+      return (
+        <CustomActions
+          {...props}
+        />
+        // <TouchableOpacity style={styles.topButtons}>
+        //   <MaterialCommunityIcons name='emoticon' size={20} color={'white'} style={styles.rightSwipeItemIcon} />
+        // </TouchableOpacity>
+      );
+    }
+    const options = {
+      'Action 1': (props) => {
+        alert('option 1');
+      },
+      'Action 2': (props) => {
+        alert('option 2');
+      },
+      'Cancel': () => {},
+    };
+    return (
+      <Actions
+        {...props}
+        options={options}
+      />
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -267,7 +294,7 @@ class Chat extends Component {
           </TouchableOpacity>
         </TopBar>
 
-        <GiftedChat
+        <PmhChat
           messages={this.state.messages}
           onSend={this.onSend}
           loadEarlier={this.state.loadEarlier}
@@ -282,6 +309,7 @@ class Chat extends Component {
           renderBubble={this.renderBubble}
           renderCustomView={this.renderCustomView}
           renderFooter={this.renderFooter}
+          // renderAccessory={this.renderAccessory}
         />
         
       </View>

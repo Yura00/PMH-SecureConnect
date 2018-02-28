@@ -163,8 +163,8 @@ const styles = StyleSheet.create({
   container: {
     width: 26,
     height: 26,
-    marginLeft: 10,
-    marginBottom: 10,
+    // marginLeft: 10,
+    // marginBottom: 10,
   },
   wrapper: {
     borderRadius: 13,
