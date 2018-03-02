@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
+import { Badge, Avatar } from 'react-native-material-ui'
 import { Dialog } from 'react-native-simple-dialogs'
 
 import styles from './callDialog.style'
 
-class CallDialog  extends Component {
+class CallDialog extends Component {
   constructor(props) {
     super(props);
     this.state = {

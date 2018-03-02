@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, ListView } from 'react-native'
-import { TopBar, AtoZList, ContactListSection, ContactListItem, Switch } from '../../components/'
-import { GlobalStyle } from '../../themes'
+import { Text, View, ListView, TouchableOpacity, Alert, Button } from 'react-native'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { TopBar, SearchBar, AtoZList, ContactListSection, ContactListItem, Switch } from '../../components/'
+import { GlobalStyle, Images } from '../../themes'
 import styles from './contacts.style'
 
 import data from '../mockData'
@@ -58,36 +59,88 @@ const formatData = function(data) {
   return result
 }
 
-class Contacts  extends Component {
+class Contacts extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    header: navigation.state.params ? navigation.state.params.header : undefined,
+    headerRight: (
+      <TouchableOpacity style={styles.searchButtonContainer} onPress={() => navigation.state.params.openSearch()}>
+        <MaterialIcons name='search' size={22} color={'white'} />
+      </TouchableOpacity>
+    )
+  })
+
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      isActive: false,
-      dataSource: ds.cloneWithRows(data),
-    };
+      isSearch: false,
+      listData: formatData(data)
+    }
+  }
+
+  componentDidMount() {
+    this.props.navigation.setParams({ openSearch: this.openSearch.bind(this) });
+  }
+
+  openSearch () {
+    this.setState({isSearch: !this.state.isSearch}, () => {
+      this.props.navigation.setParams({ header: null });
+    })
+  }
+
+  onSearchChanged (searchKey) {
+    if (!searchKey || searchKey === '') {
+      this.setState({
+        listData: formatData(data)
+      })
+      return
+    }
+
+    const key = searchKey.toLowerCase()
+    let filteredItems = data.filter((item) => {
+      return (item.name.first + item.name.last).toLowerCase().match(key)
+    })
+    if (Array.isArray(filteredItems)) {
+      this.setState({
+        listData: formatData(filteredItems)
+      })
+    }
+  }
+
+  onCancelSearch () {
+    this.setState({
+      listData: formatData(data)
+    })
+    this.setState({isSearch: false}, () => {
+      this.props.navigation.setParams({ header: this.props.navigation.navigation });
+    })
   }
 
   render() {
-    const listData = formatData(data)
     return (
       <View style={GlobalStyle.pageContainer}>
-        <TopBar hasContent>
-          <Switch 
-            value={false}
-            onValueChange={(val) => console.log(val)}
-            activeText={'Local'}
-            inActiveText={'Global'}
-            barWidth={160}
-            barHeight={25}
+      { this.state.isSearch
+        ? <SearchBar
+            placeholder='Search contact'
+            searchHandler={(key) => this.onSearchChanged(key)}
+            cancelSearchHandler={() => this.onCancelSearch()}
           />
-        </TopBar>
+        : <TopBar hasContent>
+            <Switch
+              value={false}
+              onValueChange={(val) => console.log(val)}
+              activeText={'Local'}
+              inActiveText={'Global'}
+              barWidth={160}
+              barHeight={25}
+            />
+          </TopBar>
+      }
         <AtoZList
           visibleAlphabet
-          style={styles.listView}
+          style={[styles.listView, {position: this.state.isSearch ? 'relative' : 'absolute'}]}
           sectionHeaderHeight={0}
           cellHeight={60}
-          data={listData}
+          data={this.state.listData}
           renderCell={(data) => <ContactListItem {...data} onPress={() => this.props.navigation.navigate('ViewProfile', {data: data})}/>}
           renderSection={(data) => <ContactListSection data={data.sectionId}/>}
         />

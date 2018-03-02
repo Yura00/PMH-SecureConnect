@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
+import { Badge, Avatar } from 'react-native-material-ui'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Swipeable from 'react-native-swipeable'
 import { LeftSwipeItem, RightSwipeItem, CallDialog } from '../'
@@ -27,7 +27,7 @@ class ChatListItem  extends Component {
     }
 
     return (
-      <ThemeProvider>
+      <TouchableOpacity>
         <Swipeable
           leftButtonWidth={80}
           rightButtonWidth={80}
@@ -88,7 +88,7 @@ class ChatListItem  extends Component {
 
           </TouchableOpacity>
         </Swipeable>
-      </ThemeProvider>
+      </TouchableOpacity>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
+import { Badge, Avatar } from 'react-native-material-ui'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Swipeable from 'react-native-swipeable'
 import styles from './contactListItem.style'
@@ -40,7 +40,7 @@ class ContactListItem  extends Component {
     }
 
     return (
-      <ThemeProvider>
+      <TouchableOpacity>
         <Swipeable
           leftButtonWidth={90}
           rightButtonWidth={90}
@@ -141,7 +141,7 @@ class ContactListItem  extends Component {
 
           </TouchableOpacity>
         </Swipeable>
-      </ThemeProvider>
+      </TouchableOpacity>
     );
   }
 }

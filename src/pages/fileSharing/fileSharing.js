@@ -29,7 +29,12 @@ class FileSharing  extends Component {
               <MaterialCommunityIcons name='chevron-right' size={25} color={'gray'} />
             </TouchableOpacity>
             <Text style={styles.commentTitle}> Add comment </Text>
-            <TextInput style={styles.commentText} multiline placeholder='Enter commnet...'/>
+            <TextInput
+              style={styles.commentText}
+              multiline
+              underlineColorAndroid='transparent'
+              placeholder='Enter commnet...'
+            />
           </View>
         </View>
     );

@@ -5,7 +5,7 @@ import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
 import { ShadowButton } from '../'
 import {Images, Colors} from '../../themes'
-import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
+import { Badge, Avatar } from 'react-native-material-ui'
 
 class SideMenu extends Component {
   navigateToScreen = (route) => () => {
@@ -26,7 +26,7 @@ class SideMenu extends Component {
 
   render () {
     return (
-      <ThemeProvider>
+      <TouchableOpacity>
         <View style={styles.container}>
           <View style={styles.profile}>
             <Badge
@@ -69,7 +69,7 @@ class SideMenu extends Component {
             <ShadowButton label='Logout' onPress={this.logout} />
           </View>
         </View>
-      </ThemeProvider>
+      </TouchableOpacity>
     );
   }
 }

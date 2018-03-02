@@ -35,24 +35,49 @@ class EditProfile  extends Component {
           <View style={styles.mainContent}>
             <View style={styles.listItem}>
               <Text style={styles.itemTitle}> Name </Text>
-              <TextInput style={styles.itemValue} value={this.state.name} onChangeText={(name) => this.setState({name: name})}/>
+              <TextInput
+                style={styles.itemValue}
+                value={this.state.name}
+                underlineColorAndroid='transparent'
+                onChangeText={(name) => this.setState({name: name})}
+              />
             </View>
             <View style={styles.listItem}>
               <Text style={styles.itemTitle}> Title </Text>
-              <TextInput style={styles.itemValue} value={this.state.title} onChangeText={(title) => this.setState({title: title})}/>
+              <TextInput
+                style={styles.itemValue}
+                value={this.state.title}
+                underlineColorAndroid='transparent'
+                onChangeText={(title) => this.setState({title: title})}
+              />
             </View>
             <View style={styles.listItem}>
               <Text style={styles.itemTitle}> Department </Text>
-              <TextInput style={styles.itemValue} value={this.state.department} onChangeText={(department) => this.setState({department: department})}/>
+              <TextInput
+                style={styles.itemValue}
+                value={this.state.department}
+                underlineColorAndroid='transparent'
+                onChangeText={(department) => this.setState({department: department})}
+              />
             </View>
             <View style={styles.listItem}>
               <Text style={styles.itemTitle}> Phone Number </Text>
-              <TextInput style={styles.itemValue} value={this.state.phone} onChangeText={(phone) => this.setState({phone: phone})}/>
+              <TextInput 
+                style={styles.itemValue}
+                value={this.state.phone}
+                underlineColorAndroid='transparent'
+                onChangeText={(phone) => this.setState({phone: phone})}
+              />
               <Image source={Images.icon_verify} style={styles.verifyIcon} />
             </View>
             <View style={styles.listItem}>
               <Text style={styles.itemTitle}> Email </Text>
-              <TextInput style={styles.itemValue} value={this.state.email} onChangeText={(email) => this.setState({email: email})}/>
+              <TextInput
+                style={styles.itemValue}
+                value={this.state.email}
+                underlineColorAndroid='transparent'
+                onChangeText={(email) => this.setState({email: email})}
+              />
               <Image source={Images.icon_verify} style={styles.verifyIcon} />
             </View>
           </View>

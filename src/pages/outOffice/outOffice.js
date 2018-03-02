@@ -30,7 +30,12 @@ class OutOffice  extends Component {
             <MaterialCommunityIcons name='chevron-right' size={25} color={'gray'} />
           </TouchableOpacity>
           <Text style={styles.commentTitle}> Message </Text>
-          <TextInput style={styles.commentText} multiline placeholder='Enter your out of office message...'/>
+          <TextInput
+            style={styles.commentText}
+            multiline
+            underlineColorAndroid='transparent'
+            placeholder='Enter your out of office message...'
+          />
         </View>
 
         <View style={styles.footerContainer}>

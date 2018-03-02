@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {NavigationActions} from 'react-navigation';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
+import { Badge, Avatar } from 'react-native-material-ui'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import {Images, Colors} from '../../themes'
 

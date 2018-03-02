@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ListView, Image, TouchableOpacity } from 'react-native'
-import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
+import { Badge, Avatar } from 'react-native-material-ui'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { TopBar, AtoZList, ContactListSection, ContactListItem, Switch } from '../../components/'
 import { GlobalStyle, Colors } from '../../themes'
@@ -60,7 +60,7 @@ const formatData = function(data) {
   return result
 }
 
-class NewGroup  extends Component {
+class NewGroup extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerLeft: (<TouchableOpacity style={styles.backButtonContainer} onPress={() => {navigation.goBack()}}>
       <MaterialCommunityIcons name='chevron-left' size={30} color={'white'} />
@@ -91,7 +91,6 @@ class NewGroup  extends Component {
     const listData = formatData(data)
     console.log(this.state.groupUsers, 'group users')
     return (
-    <ThemeProvider>
       <View style={GlobalStyle.pageContainer}>
         {/* <TopBar hasContent>
           <Switch 
@@ -131,7 +130,6 @@ class NewGroup  extends Component {
           renderSection={(data) => <ContactListSection data={data.sectionId}/>}
         />
       </View>
-    </ThemeProvider>
     );
   }
 }

@@ -6,7 +6,7 @@ import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
 import { Button } from 'react-native-elements'
 
 import {Images, Colors} from '../../themes'
-import { ThemeProvider, Badge, Avatar } from 'react-native-material-ui'
+import { Badge, Avatar } from 'react-native-material-ui'
 
 class Drawer extends Component {
   navigateToScreen = (route) => () => {
