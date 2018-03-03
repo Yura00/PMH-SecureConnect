@@ -20,8 +20,6 @@ export default StyleSheet.create({
     fontSize: 14,
     color: '#aaa',
   },
-
-
   container: {
     flex: 1,
     position: 'relative'
@@ -32,7 +30,12 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
     zIndex: 5,
-    padding: 15
+    padding: 15,
+  },
+  topButtonIcon: {
+    width: 17,
+    height: 17,
+    resizeMode: 'center',
   },
   separator: {
     flex: 1,

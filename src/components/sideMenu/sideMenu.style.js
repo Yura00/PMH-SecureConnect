@@ -1,9 +1,9 @@
 import { Colors } from "../../themes";
 
-  export default {
+export default {
     container: {
-      flex: 1,
-      alignItems: 'center',
+        flex: 1,
+        alignItems: 'center',
         justifyContent: 'center'
     },
     profile: {
@@ -30,7 +30,7 @@ import { Colors } from "../../themes";
         borderRadius: 50,
     },
     status: {
-        bottom: 5, 
+        bottom: 5,
         right: 5,
         backgroundColor: 'red',
         borderWidth: 3,
@@ -54,4 +54,4 @@ import { Colors } from "../../themes";
     pageName: {
         fontSize: 16
     }
-  };
+};

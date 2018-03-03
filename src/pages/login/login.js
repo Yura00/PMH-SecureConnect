@@ -23,7 +23,7 @@ class Login extends React.Component {
   }
 
   showPass() {
-    this.state.press === false ? this.setState({ showPass: false, press: true }) :this.setState({ showPass: true, press: false });
+    this.state.press === false ? this.setState({ showPass: false, press: true }) : this.setState({ showPass: true, press: false });
   }
 
   getStyledLinkText(url) {
@@ -33,6 +33,10 @@ class Login extends React.Component {
       return 'Privacy Policy'
     }
     return null
+  }
+
+  login () {
+    this.state.isTouchID ? this.props.navigation.navigate('TouchID') : this.props.navigation.navigate('RootDrawerNavigator')
   }
   
   render() {
@@ -63,7 +67,7 @@ class Login extends React.Component {
             <Text style={styles.textTouchID}> Setup Touch ID Login </Text>
             <Switch style={styles.switch} tintColor={Colors.default} value={ this.state.isTouchID } onValueChange={(value) => this.setState({isTouchID: value})} />
           </View>
-          <ShadowButton style={styles.button} label='Log In' onPress={() => this.props.navigation.navigate('TouchID')}/>
+          <ShadowButton style={styles.button} label='Log In' onPress={() => this.login()}/>
           <Hyperlink
             linkStyle={styles.hyberLinkText}
             linkText={ url => this.getStyledLinkText(url) }

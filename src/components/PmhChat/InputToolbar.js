@@ -99,13 +99,15 @@ export default class InputToolbar extends React.Component {
             <View style={styles.border} />
             {this.renderComposer()}
             {this.renderSend()}
+            {/* {this.renderActions()} */}
             <TouchableOpacity style={styles.attchment}>
               <MaterialCommunityIcons name='paperclip' size={22} color={'gray'} style={styles.rightSwipeItemIcon} />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.record}>
+          {/* <TouchableOpacity style={styles.record}>
             <MaterialCommunityIcons name='microphone' size={22} color={'white'} style={styles.rightSwipeItemIcon} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          {this.renderActions()}
         </View>
       </View>
     );

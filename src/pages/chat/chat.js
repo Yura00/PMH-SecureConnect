@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, ListView, Icon, TouchableOpacity, Platform } from 'react-native'
+import { View, Text, Image, ListView, Icon, TouchableOpacity, Platform } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import styles from './chat.style'
-import { Colors } from '../../themes'
+import { Colors, Images } from '../../themes'
 import data from '../mockData'
 
 import { TopBar, PmhChat, Actions, Bubble } from '../../components/'
 
-
-// import {GiftedChat, Actions, Bubble} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
 
@@ -19,19 +17,21 @@ const n_messages = [
     _id: Math.round(Math.random() * 1000000),
     text: 'Yes, and I use Gifted Chat!',
     createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),
+    sent: true,
     user: {
       _id: 1,
       name: 'Developer',
     },
-    // location: {
-    //   latitude: 48.864601,
-    //   longitude: 2.398704
-    // },
+    location: {
+      latitude: 48.864601,
+      longitude: 2.398704
+    },
   },
   {
     _id: Math.round(Math.random() * 1000000),
     text: 'Are you building a chat app?',
     createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),
+    received: true,
     user: {
       _id: 2,
       name: 'React Native',
@@ -44,6 +44,7 @@ const o_messages = [
     _id: Math.round(Math.random() * 1000000),
     text: 'It uses the same design as React, letting you compose a rich mobile UI from declarative components https://facebook.github.io/react-native/',
     createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),
+    sent: true,
     user: {
       _id: 1,
       name: 'Developer',
@@ -53,6 +54,7 @@ const o_messages = [
     _id: Math.round(Math.random() * 1000000),
     text: 'React Native lets you build mobile apps using only JavaScript',
     createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),
+    received: true,
     user: {
       _id: 1,
       name: 'Developer',
@@ -176,6 +178,7 @@ class Chat extends Component {
           _id: Math.round(Math.random() * 1000000),
           text: text,
           createdAt: new Date(),
+          received: true,
           user: {
             _id: 2,
             name: 'React Native',
@@ -278,19 +281,19 @@ class Chat extends Component {
       <View style={styles.container}>
         <TopBar>
           <TouchableOpacity style={styles.topButtons}>
-            <MaterialCommunityIcons name='account-plus' size={20} color={'white'} style={styles.rightSwipeItemIcon} />
+            <Image source={Images.icon_user_plus} style={styles.topButtonIcon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.topButtons}>
-            <MaterialCommunityIcons name='video' size={20} color={'white'} style={styles.rightSwipeItemIcon} />
+            <Image source={Images.icon_camera} style={styles.topButtonIcon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.topButtons} onPress={() => this.setState({showDialog: !this.state.showDialog})}>
-            <MaterialIcons name='call' size={20} color={'white'} style={styles.rightSwipeItemIcon} />
+            <Image source={Images.icon_phone} style={styles.topButtonIcon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.topButtons}>
-            <MaterialCommunityIcons name='car-wash' size={20} color={'white'} style={styles.rightSwipeItemIcon} />
+            <Image source={Images.icon_bus} style={styles.topButtonIcon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.topButtons} onPress={() => this.setState({showDialog: !this.state.showDialog})}>
-            <MaterialCommunityIcons name='notebook' size={20} color={'white'} style={styles.rightSwipeItemIcon} />
+            <Image source={Images.icon_book} style={styles.topButtonIcon} />
           </TouchableOpacity>
         </TopBar>
 
@@ -306,7 +309,7 @@ class Chat extends Component {
           }}
 
           renderActions={this.renderCustomActions}
-          renderBubble={this.renderBubble}
+          // renderBubble={this.renderBubble}
           renderCustomView={this.renderCustomView}
           renderFooter={this.renderFooter}
           // renderAccessory={this.renderAccessory}

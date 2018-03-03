@@ -5,11 +5,16 @@ import {
   TouchableOpacity,
   View,
   Text,
+  Button,
+  Image
 } from 'react-native';
 import PropTypes from 'prop-types'
 
 import CameraRollPicker from 'react-native-camera-roll-picker';
+import FadeInView from './FadeInView'
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Colors, Images } from '../../themes';
 
 export default class CustomActions extends React.Component {
   constructor(props) {
@@ -35,34 +40,35 @@ export default class CustomActions extends React.Component {
   }
 
   onActionsPress() {
-    const options = ['Choose From Library', 'Send Location', 'Cancel'];
-    const cancelButtonIndex = options.length - 1;
-    this.context.actionSheet().showActionSheetWithOptions({
-      options,
-      cancelButtonIndex,
-    },
-    (buttonIndex) => {
-      switch (buttonIndex) {
-        case 0:
-          this.setModalVisible(true);
-          break;
-        case 1:
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              this.props.onSend({
-                location: {
-                  latitude: position.coords.latitude,
-                  longitude: position.coords.longitude,
-                },
-              });
-            },
-            (error) => alert(error.message),
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-          );
-          break;
-        default:
-      }
-    });
+    this.setModalVisible(true);
+    // const options = ['Choose From Library', 'Send Location', 'Cancel'];
+    // const cancelButtonIndex = options.length - 1;
+    // this.context.actionSheet().showActionSheetWithOptions({
+    //   options,
+    //   cancelButtonIndex,
+    // },
+    // (buttonIndex) => {
+    //   switch (buttonIndex) {
+    //     case 0:
+    //       this.setModalVisible(true);
+    //       break;
+    //     case 1:
+    //       navigator.geolocation.getCurrentPosition(
+    //         (position) => {
+    //           this.props.onSend({
+    //             location: {
+    //               latitude: position.coords.latitude,
+    //               longitude: position.coords.longitude,
+    //             },
+    //           });
+    //         },
+    //         (error) => alert(error.message),
+    //         {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    //       );
+    //       break;
+    //     default:
+    //   }
+    // });
   }
 
   selectImages(images) {
@@ -114,30 +120,13 @@ export default class CustomActions extends React.Component {
     );
   }
 
-  renderIcon() {
-    if (this.props.icon) {
-      return this.props.icon();
-    }
-    return (
-      <View
-        style={[styles.wrapper, this.props.wrapperStyle]}
-      >
-        <Text
-          style={[styles.iconText, this.props.iconTextStyle]}
-        >
-          +
-        </Text>
-      </View>
-    );
-  }
-
   render() {
     return (
       <TouchableOpacity
-        style={[styles.container, this.props.containerStyle]}
+        style={styles.container}
         onPress={this.onActionsPress}
       >
-        <Modal
+        {/* <Modal
           animationType={'slide'}
           transparent={false}
           visible={this.state.modalVisible}
@@ -152,33 +141,148 @@ export default class CustomActions extends React.Component {
             callback={this.selectImages}
             selected={[]}
           />
-        </Modal>
-        {this.renderIcon()}
+        </Modal> */}
+        <FadeInView visible={this.state.modalVisible}>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.state.modalVisible}
+            onRequestClose={()=> this.setState({modalVisible: false})}
+          >
+            <View style={styles.modalContainer}>
+              <TouchableOpacity style={styles.dimmer} onPress={()=> this.setState({modalVisible: false})}></TouchableOpacity>
+              <View style={styles.modalContent}>
+
+                
+                <View style={styles.row}>
+                  <View style={styles.column}>
+                    <TouchableOpacity style={[styles.modalIconContainer, { backgroundColor: Colors.icon_bg_document}]}>
+                      <Image source={Images.icon_bg_document} style={styles.modalIcon}/>
+                    </TouchableOpacity>
+                    <Text style={styles.modalItemText}>Document</Text>
+                  </View>
+                  <View style={styles.column}>
+                    <TouchableOpacity style={[styles.modalIconContainer, { backgroundColor: Colors.icon_bg_camera}]}>
+                      <Image source={Images.icon_bg_camera} style={styles.modalIcon}/>
+                    </TouchableOpacity>
+                    <Text style={styles.modalItemText}>Camera</Text>
+                  </View>
+                  <View style={styles.column}>
+                    <TouchableOpacity style={[styles.modalIconContainer, { backgroundColor: Colors.icon_bg_image}]}>
+                      <Image source={Images.icon_bg_image} style={styles.modalIcon}/>
+                    </TouchableOpacity>
+                    <Text style={styles.modalItemText}>Image</Text>
+                  </View>
+                </View>
+
+                <View style={styles.row}>
+                  <View style={styles.column}>
+                    <TouchableOpacity style={[styles.modalIconContainer, { backgroundColor: Colors.icon_bg_video}]}>
+                      <Image source={Images.icon_bg_video} style={styles.modalIcon}/>
+                    </TouchableOpacity>
+                    <Text style={styles.modalItemText}>Video</Text>
+                  </View>
+                  <View style={styles.column}>
+                    <TouchableOpacity style={[styles.modalIconContainer, { backgroundColor: Colors.icon_bg_audio}]}>
+                      <Image source={Images.icon_bg_audio} style={styles.modalIcon}/>
+                    </TouchableOpacity>
+                    <Text style={styles.modalItemText}>Audio</Text>
+                  </View>
+                  <View style={styles.column}>
+                    <TouchableOpacity style={[styles.modalIconContainer, { backgroundColor: Colors.icon_bg_location}]}>
+                      <Image source={Images.icon_bg_location} style={styles.modalIcon}/>
+                    </TouchableOpacity>
+                    <Text style={styles.modalItemText}>Location</Text>
+                  </View>
+                </View>
+              
+
+              </View>
+              <TouchableOpacity style={styles.cancelContainer} onPress={()=> this.setState({modalVisible: false})}>
+                <Text style={styles.cancelBtn}>Cancel</Text>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        </FadeInView>
+
+        <Image source={Images.icon_mic} style={styles.btnRecord} />
       </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: 26,
-    height: 26,
-    // marginLeft: 10,
-    // marginBottom: 10,
+  row: {
+    flexDirection: 'row',
+    margin: 10
   },
-  wrapper: {
-    borderRadius: 13,
-    borderColor: '#b2b2b2',
-    borderWidth: 2,
+  column: {
+    flexDirection: 'column',
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  iconText: {
-    color: '#b2b2b2',
-    fontWeight: 'bold',
-    fontSize: 16,
-    backgroundColor: 'transparent',
-    textAlign: 'center',
+  container: {
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 40,
+    height: 40,
+    margin: 5,
+    backgroundColor: Colors.default
   },
+  dimmer: {
+    flex: 1
+  },
+  modalContainer: {
+    flex: 1,
+    padding: 8,
+    paddingBottom: 0,
+    justifyContent: "flex-end",
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    margin: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderRadius: 10
+  },
+  cancelContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 44,
+    borderRadius: 40,
+    margin: 5,
+    marginBottom: 10,
+    backgroundColor: 'white',
+  },
+  cancelBtn: {
+    color: Colors.defaultblue,
+    fontSize: 15,
+    fontWeight: '500'
+  },
+  modalIconContainer: {
+    width: 45,
+    height: 45,
+    borderRadius: 50,
+    backgroundColor: Colors.orange,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  modalIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain'
+  },
+  modalItemText: {
+    margin: 5,
+    fontSize: 13
+  },
+  btnRecord: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain'
+  }
 });
 
 CustomActions.contextTypes = {
@@ -201,4 +305,4 @@ CustomActions.propTypes = {
   containerStyle: View.propTypes.style,
   wrapperStyle: View.propTypes.style,
   iconTextStyle: Text.propTypes.style,
-};
+}

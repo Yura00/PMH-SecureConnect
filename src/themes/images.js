@@ -4,6 +4,12 @@ const Images = {
     bg_profile: require('../assets/bg_profile-min.png'),
     bg_login: require('../assets/bg_login-min.png'),
     bg_touchID: require('../assets/bg_touchID-min.png'),
+    icon_bg_audio: require('../assets/icon_bg_audio-min.png'),
+    icon_bg_camera: require('../assets/icon_bg_camera-min.png'),
+    icon_bg_document: require('../assets/icon_bg_document-min.png'),
+    icon_bg_image: require('../assets/icon_bg_image-min.png'),
+    icon_bg_location: require('../assets/icon_bg_location-min.png'),
+    icon_bg_video: require('../assets/icon_bg_video-min.png'),
     icon_username: require('../assets/icon_username-min.png'),
     icon_password: require('../assets/icon_password-min.png'),
     icon_finger_print: require('../assets/icon_finger_print-min.png'),
@@ -25,6 +31,10 @@ const Images = {
     icon_phone: require('../assets/icon_phone-min.png'),
     icon_camera: require('../assets/icon_camera-min.png'),
     icon_verify: require('../assets/icon_verify-min.png'),
+    icon_book: require('../assets/icon_book-min.png'),
+    icon_bus: require('../assets/icon_bus-min.png'),
+    icon_mic: require('../assets/icon_mic-min.png'),
+    icon_sync: require('../assets/icon_sync-min.png')
 }
 
 export default Images

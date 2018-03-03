@@ -26,50 +26,48 @@ class SideMenu extends Component {
 
   render () {
     return (
-      <TouchableOpacity>
-        <View style={styles.container}>
-          <View style={styles.profile}>
-            <Badge
-              size={20}
-              style={{ container: [styles.status, {backgroundColor: Colors.online}] }}
-            >
-              <Image source={Images.img_me} style={styles.photo} />
-            </Badge>
-            <Text style={styles.name}> Marco Mustapic </Text>
-            <View style={styles.seperator} />
-          </View>
-
-          <View style={styles.routes}>
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('FileSharing')}>
-                <Text style={styles.pageName}> Secure File Sharing </Text>
-            </TouchableOpacity>
-            <View style={styles.seperator} />
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('ChangeBackup')}>
-                <Text style={styles.pageName}> Change Backup </Text>
-            </TouchableOpacity>
-            <View style={styles.seperator} />
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('EditProfile')}>
-                <Text style={styles.pageName}> Edit Profile </Text>
-            </TouchableOpacity>
-            <View style={styles.seperator} />
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('OutOffice')}>
-                <Text style={styles.pageName}> Out of Office </Text>
-            </TouchableOpacity>
-            <View style={styles.seperator} />
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Support')}>
-                <Text style={styles.pageName}> Support </Text>
-            </TouchableOpacity>
-            <View style={styles.seperator} />
-            <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Settings')}>
-                <Text style={styles.pageName}> Settings </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.footerContainer}>
-            <View style={styles.seperator} />
-            <ShadowButton label='Logout' onPress={this.logout} />
-          </View>
+      <View style={styles.container}>
+        <View style={styles.profile}>
+          <Badge
+            size={20}
+            style={{ container: [styles.status, {backgroundColor: Colors.online}] }}
+          >
+            <Image source={Images.img_me} style={styles.photo} />
+          </Badge>
+          <Text style={styles.name}> Marco Mustapic </Text>
+          <View style={styles.seperator} />
         </View>
-      </TouchableOpacity>
+
+        <View style={styles.routes}>
+          <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('FileSharing')}>
+              <Text style={styles.pageName}> Secure File Sharing </Text>
+          </TouchableOpacity>
+          <View style={styles.seperator} />
+          <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('ChangeBackup')}>
+              <Text style={styles.pageName}> Change Backup </Text>
+          </TouchableOpacity>
+          <View style={styles.seperator} />
+          <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('EditProfile')}>
+              <Text style={styles.pageName}> Edit Profile </Text>
+          </TouchableOpacity>
+          <View style={styles.seperator} />
+          <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('OutOffice')}>
+              <Text style={styles.pageName}> Out of Office </Text>
+          </TouchableOpacity>
+          <View style={styles.seperator} />
+          <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Support')}>
+              <Text style={styles.pageName}> Support </Text>
+          </TouchableOpacity>
+          <View style={styles.seperator} />
+          <TouchableOpacity style={styles.route} onPress={this.navigateToScreen('Settings')}>
+              <Text style={styles.pageName}> Settings </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.footerContainer}>
+          <View style={styles.seperator} />
+          <ShadowButton label='Logout' onPress={this.logout} />
+        </View>
+      </View>
     );
   }
 }
