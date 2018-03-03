@@ -28,28 +28,32 @@ class SearchBar  extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.inputWrapper}>
-				  <MaterialIcons style={styles.searchImg} name='search' size={20} color={'white'} />
-          <TextInput 
-            style={styles.input}
-            value={this.state.value}
-            placeholder={this.props.placeholder}
-            selectionColor='lightgray'
-            autoCorrect={false}
-            autoCapitalize={'none'}
-            returnKeyType={this.props.returnKeyType}
-            placeholderTextColor='lightgray'
-            underlineColorAndroid='transparent'
-            onChangeText={(value) => this.onChange(value)}
-          />
-          <TouchableOpacity onPress={()=> this.onChange('')}>
-            <MaterialIcons style={styles.cancelImg} name='cancel' size={16} color={'white'} />
-          </TouchableOpacity>
-			  </View>
-        <TouchableOpacity onPress={()=> this.onCancel()}>
-          <Text style={styles.cancelBtn}>Cancel</Text>
-        </TouchableOpacity>
+      <View style={[styles.container, style={height: this.props.withTopBar ? 40 : 70}]}>
+        <View style={styles.content}>
+          <View style={styles.inputWrapper}>
+            <MaterialIcons style={styles.searchImg} name='search' size={20} color={'white'} />
+            <TextInput 
+              style={styles.input}
+              value={this.state.value}
+              placeholder={this.props.placeholder}
+              selectionColor='lightgray'
+              autoCorrect={false}
+              autoCapitalize={'none'}
+              returnKeyType={this.props.returnKeyType}
+              placeholderTextColor='lightgray'
+              underlineColorAndroid='transparent'
+              onChangeText={(value) => this.onChange(value)}
+            />
+            <TouchableOpacity onPress={()=> this.onChange('')}>
+              <MaterialIcons style={styles.cancelImg} name='cancel' size={16} color={'white'} />
+            </TouchableOpacity>
+          </View>
+          {!this.props.withTopBar &&
+            <TouchableOpacity onPress={()=> this.onCancel()}>
+              <Text style={styles.cancelBtn}>Cancel</Text>
+            </TouchableOpacity>
+          }
+        </View>
       </View>
     );
   }

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, ListView, Image, TouchableOpacity } from 'react-native'
 import { Badge, Avatar } from 'react-native-material-ui'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { TopBar, AtoZList, ContactListSection, ContactListItem, Switch } from '../../components/'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { SearchBar, TopBar, AtoZList, ContactListSection, ContactListItem, Switch } from '../../components/'
 import { GlobalStyle, Colors } from '../../themes'
 import styles from './newGroup.style'
 
@@ -62,16 +63,51 @@ const formatData = function(data) {
 
 class NewGroup extends Component {
   static navigationOptions = ({ navigation }) => ({
-    headerLeft: (<TouchableOpacity style={styles.backButtonContainer} onPress={() => {navigation.goBack()}}>
-      <MaterialCommunityIcons name='chevron-left' size={30} color={'white'} />
-      </TouchableOpacity>)
+    headerLeft: (
+      <TouchableOpacity style={styles.backButtonContainer} onPress={() => {navigation.goBack()}}>
+        <MaterialCommunityIcons name='chevron-left' size={30} color={'white'} />
+      </TouchableOpacity>
+    ),
+    headerRight: (
+      <TouchableOpacity style={styles.searchButtonContainer} onPress={() => navigation.state.params.enableNewGroup ? navigation.state.params.newGroup() : {}}>
+        <Text style={[styles.btnNext, {opacity: navigation.state.params.enableNewGroup ? 1 : 0.7}]}> Next </Text>
+      </TouchableOpacity>
+    )
   })
   constructor(props) {
     super(props);
     this.state = {
       isActive: false,
       groupUsers: [],
+      listData: formatData(data)
     };
+  }
+
+  componentDidMount() {
+    this.props.navigation.setParams({ newGroup: this.newGroup.bind(this) });
+  }
+
+  newGroup () {
+    this.props.navigation.goBack()
+  }
+
+  onSearchChanged (searchKey) {
+    if (!searchKey || searchKey === '') {
+      this.setState({
+        listData: formatData(data)
+      })
+      return
+    }
+
+    const key = searchKey.toLowerCase()
+    let filteredItems = data.filter((item) => {
+      return (item.name.first + item.name.last).toLowerCase().match(key)
+    })
+    if (Array.isArray(filteredItems)) {
+      this.setState({
+        listData: formatData(filteredItems)
+      })
+    }
   }
 
   addToGroup (user) {
@@ -79,31 +115,25 @@ class NewGroup extends Component {
     if (index !== -1) {
       this.setState((prevState) => ({
         groupUsers: prevState.groupUsers.filter((_, i) => i !== index)
-      }));
+      }), () =>  this.props.navigation.setParams({ enableNewGroup: this.state.groupUsers.length > 0 }));
     } else {
       this.setState({
         groupUsers: this.state.groupUsers.concat(user)
-      })
+      }, () =>  this.props.navigation.setParams({ enableNewGroup: this.state.groupUsers.length > 0 }))
     }
   }
 
   render() {
-    const listData = formatData(data)
-    console.log(this.state.groupUsers, 'group users')
     return (
       <View style={GlobalStyle.pageContainer}>
-        {/* <TopBar hasContent>
-          <Switch 
-            value={false}
-            onValueChange={(val) => console.log(val)}
-            activeText={'Local'}
-            inActiveText={'Global'}
-            barWidth={160}
-            barHeight={25}
-          />
-        </TopBar> */}
-        {this.state.groupUsers.length > 0
-          ? <View style={styles.groupContainer}>
+        <SearchBar
+          withTopBar
+          placeholder='Search'
+          searchHandler={(key) => this.onSearchChanged(key)}
+          cancelSearchHandler={() => this.onCancelSearch()}
+        />
+        {this.state.groupUsers.length > 0 &&
+          <View style={styles.groupContainer}>
             {
               this.state.groupUsers.map((user) => {
                 return (
@@ -116,8 +146,7 @@ class NewGroup extends Component {
                 )
               })
             }
-            </View>
-          : null
+          </View>
         }
         <AtoZList
           visibleAlphabet
@@ -125,7 +154,7 @@ class NewGroup extends Component {
           style={styles.listView}
           sectionHeaderHeight={0}
           cellHeight={60}
-          data={listData}
+          data={this.state.listData}
           renderCell={(user) => <ContactListItem fromNewGroup {...user} onPress={() => this.addToGroup(user)}/>}
           renderSection={(data) => <ContactListSection data={data.sectionId}/>}
         />

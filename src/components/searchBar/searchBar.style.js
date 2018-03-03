@@ -10,8 +10,16 @@ export default StyleSheet.create({
     justifyContent: 'center',
     height: 70,
     backgroundColor: Colors.default,
-    padding: 10,
-    paddingTop: 30
+  },
+  content: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 5,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 10
   },
 	inputWrapper: {
     flex: 1,

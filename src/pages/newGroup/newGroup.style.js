@@ -6,6 +6,11 @@ export default StyleSheet.create({
     height: StyleSheet.hairlineWidth,
     backgroundColor: '#8E8E8E',
   },
+  btnNext: {
+    color: 'white',
+    fontSize: 12,
+    paddingRight: 5
+  },
   groupContainer: {
     flexDirection: 'row',
     height: 80,

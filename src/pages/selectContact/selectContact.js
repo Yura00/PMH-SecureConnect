@@ -79,7 +79,7 @@ class SelectContact  extends Component {
     return (
       <View style={GlobalStyle.pageContainer}>
         <TopBar />
-        <TouchableOpacity style={styles.newGroupContainer} onPress={() => this.props.navigation.navigate('NewGroup')}>
+        <TouchableOpacity style={styles.newGroupContainer} onPress={() => this.props.navigation.navigate('NewGroup', {enableNewGroup: false})}>
           <View style={styles.iconNewGroupContainer}>
             <Image source={Images.icon_new_group} style={styles.photo} />
           </View>
