@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabNavigator, Icon } from 'react-navigation'
-import { StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Platform } from 'react-native'
 import { Contacts, Chats, Notifications, Channels} from '../pages'
 import { Images, Colors, GlobalStyle } from '../themes'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
@@ -23,7 +23,7 @@ const MainTabNavigator = TabNavigator ({
       navigationOptions: {
         title: 'Chats',
         headerTitleStyle: [GlobalStyle.pageTitle, {marginTop: 30}],
-        tabBarLabel: 'chats',
+        tabBarLabel: 'Chats',
         tabBarIcon: ({ tintColor }) => {
           return (
             <Badge
@@ -60,15 +60,25 @@ const MainTabNavigator = TabNavigator ({
     tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: Colors.default,
+      inactiveTintColor: 'gray',
       showIcon: true,
+      upperCaseLabel: false,
+      style: {
+        backgroundColor: '#f8f8f8',
+      },
       tabStyle: {
           padding: 5,
           margin:0, //Padding 0 here
+          justifyContent: 'center'
       },
       iconStyle: {
-          width: 20,
-          height: 20,
+        width: 50,
+        height: 30,
+        justifyContent: 'center'
       },
+      labelStyle: {
+        fontSize: 11
+      }
     },
     animationEnabled: true,
     gestureEnabled: false,
@@ -79,20 +89,23 @@ const MainTabNavigator = TabNavigator ({
 const styles = StyleSheet.create({
   icon: {
     top: 2,
-    width: 20,
-    height: 20,
+    width: 22,
+    height: 22,
+    resizeMode: 'contain',
   },
   icon1: {
-    width: 23,
-    height: 23,
+    width: 25,
+    height: 25,
+    resizeMode: 'contain',
   },
   chatBadgeContainer: {
+    position: 'absolute',
     top: -2,
     right: -10,
     backgroundColor: 'red',
     borderWidth: 2,
     borderColor: 'white',
-    backgroundColor: Colors.red
+    backgroundColor: Colors.red,
   },
   chatBadgeContent: {
     fontSize: 8

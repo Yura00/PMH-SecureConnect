@@ -41,11 +41,12 @@ export const MainStackNavigator = StackNavigator(
       initialRouteName: 'MainTabNavigator',
       navigationOptions: {
         gesturesEnabled: false,
+        headerTintColor: 'white',
         headerStyle: {
-          backgroundColor: '#0f5fad',
-          borderBottomWidth: 0
+          backgroundColor: Colors.default,
+          borderBottomWidth: 0, // remove header bottom shadow for iOS
+          elevation:0, // remove header bottom shadow for Android
         },
-        headerTintColor: 'white'
       }
     }
   );

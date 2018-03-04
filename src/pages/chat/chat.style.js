@@ -35,7 +35,7 @@ export default StyleSheet.create({
   topButtonIcon: {
     width: 17,
     height: 17,
-    resizeMode: 'center',
+    resizeMode: 'contain',
   },
   separator: {
     flex: 1,
