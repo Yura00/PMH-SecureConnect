@@ -1,4 +1,5 @@
 import { Colors } from "../../themes";
+import { Platform } from 'react-native'
 
 export default {
     container: {
@@ -43,15 +44,19 @@ export default {
         paddingTop: 15
     },
     route: {
-        flex: 1
+        flex: 2,
+        justifyContent: 'center'
     },
     seperator: {
         width: 0.7,
         flex: 1,
-        margin: 8,
+        margin: 5,
         backgroundColor: '#3fa0ff'
     },
     pageName: {
-        fontSize: 16
+        fontSize: Platform.select({
+            ios: 16,
+            android: 15,
+        })
     }
 };

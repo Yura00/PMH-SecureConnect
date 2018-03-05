@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image } from 'react-native'
 import { StackNavigator } from 'react-navigation';
 import { Settings, ThemeSetting, NotificationSetting } from '../pages'
 import MainTabNavigator from './MainTabNavigator'
@@ -36,10 +36,13 @@ export const SettingsStackNavigator = StackNavigator(
     {
       initialRouteName: 'Settings',
       navigationOptions: {
+        headerLeft: (<View />), // center header title for Android
+        headerRight: (<View />), // center header title for Android
         gesturesEnabled: false,
         headerStyle: {
-          backgroundColor: '#0f5fad',
-          borderBottomWidth: 0
+          backgroundColor: Colors.default,
+          borderBottomWidth: 0, // remove header bottom shadow for iOS
+          elevation:0, // remove header bottom shadow for Android
         },
         headerTintColor: 'white'
       }

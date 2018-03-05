@@ -14,7 +14,7 @@ const MainTabNavigator = TabNavigator ({
         title: 'Contacts',
         headerTitleStyle: GlobalStyle.pageTitle,
         tabBarLabel: 'Contacts',
-        tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_contacts} style={[styles.icon, { tintColor: tintColor }]} />)}
+        tabBarIcon: ({ tintColor }) => {return (<Image source={ tintColor !== Colors.default ? Images.icon_tab_contacts : Images.icon_tab_contacts_active} style={styles.icon} />)}
       }
     },
     Chats: {
@@ -31,7 +31,7 @@ const MainTabNavigator = TabNavigator ({
               text='5'
               style={{ container: styles.chatBadgeContainer, content: styles.chatBadgeContent }}
             >
-              <Image source={Images.icon_tab_chats} style={[styles.icon, { tintColor: tintColor }]} />
+              <Image source={ tintColor !== Colors.default ? Images.icon_tab_chats : Images.icon_tab_chats_active} style={styles.icon} />
             </Badge>
           )
         }
@@ -43,7 +43,7 @@ const MainTabNavigator = TabNavigator ({
         headerTitleStyle: GlobalStyle.pageTitle,
         title: 'Notifications',
         tabBarLabel: 'Notifications',
-        tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_notifications} style={[styles.icon, { tintColor: tintColor }]} />)}
+        tabBarIcon: ({ tintColor }) => {return (<Image source={ tintColor !== Colors.default ? Images.icon_tab_notifications : Images.icon_tab_notifications_active} style={styles.icon} />)}
       }
     },
     Channels: {
@@ -52,7 +52,7 @@ const MainTabNavigator = TabNavigator ({
         title: 'Channels',
         headerTitleStyle: [GlobalStyle.pageTitle, {marginTop: 30}],
         tabBarLabel: 'Channels',
-        tabBarIcon: ({ tintColor }) => {return (<Image source={Images.icon_tab_channels} style={[styles.icon1, { tintColor: tintColor }]} />)}
+        tabBarIcon: ({ tintColor }) => {return (<Image source={ tintColor !== Colors.default ? Images.icon_tab_channels : Images.icon_tab_channels_active} style={styles.icon} />)}
       }
     }
   },
