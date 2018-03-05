@@ -26,6 +26,7 @@ const MainTabNavigator = TabNavigator ({
         tabBarLabel: 'Chats',
         tabBarIcon: ({ tintColor }) => {
           return (
+            <View style={styles.tmp}>
             <Badge
               size={15}
               text='5'
@@ -33,6 +34,7 @@ const MainTabNavigator = TabNavigator ({
             >
               <Image source={ tintColor !== Colors.default ? Images.icon_tab_chats : Images.icon_tab_chats_active} style={styles.icon} />
             </Badge>
+            </View>
           )
         }
       }
@@ -65,19 +67,23 @@ const MainTabNavigator = TabNavigator ({
       upperCaseLabel: false,
       style: {
         backgroundColor: '#f8f8f8',
+        height: 60
       },
       tabStyle: {
-          padding: 5,
-          margin:0, //Padding 0 here
-          justifyContent: 'center'
+        // padding: 5,
+        margin: 0, //Padding 0 here
+      },
+      indicatorStyle: {
+        opacity: 0
       },
       iconStyle: {
         width: 50,
         height: 30,
-        justifyContent: 'center'
       },
       labelStyle: {
-        fontSize: 11
+        margin: 0,
+        marginBottom: 5,
+        fontSize: 11,
       }
     },
     animationEnabled: true,
@@ -88,27 +94,33 @@ const MainTabNavigator = TabNavigator ({
 
 const styles = StyleSheet.create({
   icon: {
-    top: 2,
-    width: 22,
-    height: 22,
-    resizeMode: 'contain',
-  },
-  icon1: {
     width: 25,
     height: 25,
     resizeMode: 'contain',
+  },
+  icon1: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
+  },
+  tmp: {
+    width: 50,
+    height: 30,
+    padding: 5,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   chatBadgeContainer: {
     position: 'absolute',
     top: -2,
     right: -10,
     backgroundColor: 'red',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'white',
     backgroundColor: Colors.red,
   },
   chatBadgeContent: {
-    fontSize: 8
+    fontSize: 8,
   }
 });
 
