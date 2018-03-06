@@ -22,8 +22,8 @@ export const AppNavigator = StackNavigator(
     }
   },
   {
-    initialRouteName: 'RootDrawerNavigator',//test
-    // initialRouteName: 'Login',
+    // initialRouteName: 'RootDrawerNavigator',//test
+    initialRouteName: 'Login',
     navigationOptions: {
       gesturesEnabled: false,
       header: null,

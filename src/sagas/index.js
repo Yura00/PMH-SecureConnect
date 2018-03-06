@@ -4,9 +4,7 @@ import userLoginApi from '../services/api'
 
 const userLogin = function* userLogin (action) {
   try {
-    console.log(action.payload.email, action.payload.password)
     const data = yield userLoginApi(action.payload.email, action.payload.password)
-    console.log('api', data)
     yield put({ type: USER_LOGIN_SUCCESS, data })
   } catch (e) {
     yield put({ type: USER_LOGIN_FAILURE })

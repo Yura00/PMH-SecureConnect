@@ -36,7 +36,9 @@ class Login extends React.Component {
   }
 
   login () {
-    this.state.isTouchID ? this.props.navigation.navigate('TouchID') : this.props.navigation.navigate('RootDrawerNavigator')
+    console.log('==action', this.state.username, this.state.password)
+    this.props.userLogin(this.state.username, this.state.password)
+    // this.state.isTouchID ? this.props.navigation.navigate('TouchID') : this.props.navigation.navigate('RootDrawerNavigator')
   }
   
   render() {
@@ -51,17 +53,25 @@ class Login extends React.Component {
         <Text style={styles.title}> Welcome to Secure Connect </Text>
           <KeyboardAvoidingView behavior='padding'
             style={styles.container}>
-            <LoginInput source={Images.icon_username}
+            <LoginInput
+              value={this.state.username}
+              source={Images.icon_username}
               placeholder='Username'
               autoCapitalize={'none'}
               returnKeyType={'done'}
-              autoCorrect={false} />
-            <LoginInput source={Images.icon_password}
+              autoCorrect={false}
+              onChangeText={(username) => this.setState({username: username})}
+            />
+            <LoginInput
+              value={this.state.password}
+              source={Images.icon_password}
               secureTextEntry={this.state.showPass}
               placeholder='Password'
               returnKeyType={'done'}
               autoCapitalize={'none'}
-              autoCorrect={false} />
+              autoCorrect={false}
+              onChangeText={(password) => this.setState({password: password})}
+            />
           </KeyboardAvoidingView>
           <View style={styles.touchIdContainer}>
             <Text style={styles.textTouchID}> Setup Touch ID Login </Text>

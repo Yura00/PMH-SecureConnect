@@ -23,7 +23,9 @@ export default class LoginInput extends Component {
 					autoCapitalize={this.props.autoCapitalize}
 					returnKeyType={this.props.returnKeyType}
 					placeholderTextColor='lightgray'
-					underlineColorAndroid='transparent' />
+					underlineColorAndroid='transparent'
+					onChangeText={(val) => this.props.onChangeText && this.props.onChangeText(val)}
+				/>
 			</View>
 		);
 	}

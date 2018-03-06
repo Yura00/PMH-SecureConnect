@@ -45,7 +45,7 @@ export const MainStackNavigator = StackNavigator(
         headerRight: (<View />), // center header title for Android
         gesturesEnabled: false,
         headerTintColor: 'white',
-        // headerTitleStyle: {
+        // headerTitleStyle: { // globalStyle.js
         //   // textAlign: 'center', // center header title for Android
         //   // alignSelf:'center', // center header title for Android
         // },

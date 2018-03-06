@@ -23,9 +23,8 @@ export default function navigationReducer(state, action) {
         );
         break;
     case USER_LOGIN_SUCCESS:
-    console.log('login success')
         nextState = AppNavigator.router.getStateForAction(
-          NavigationActions.navigate({ routeName: 'RootDrawerNavigator' }),
+          // NavigationActions.navigate({ routeName: 'RootDrawerNavigator' }),
           state
         );
         break;
