@@ -6,7 +6,7 @@ const people = [
 import { API_URL } from '../config/constants'
 import { toHexString } from '../utils/globalFuctions'
 
-import sjcl from 'sjcl'
+// import sjcl from 'sjcl'
 
 import { sha256 } from 'js-sha256'
 const SK = '0448641d6709747511a9e3aca9887dcb07205293827095cb1ff69a566eaa74656b5eec805f41f7ff87c17c25f4aa385936b3342581568cc6557802ed9b85872f41'
