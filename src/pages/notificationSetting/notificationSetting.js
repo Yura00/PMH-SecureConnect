@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements'
 import { TopBar } from '../../components'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { GlobalStyle, Colors } from '../../themes'

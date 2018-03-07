@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import styles from './drawer.style';
 import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View, Image, TouchableOpacity} from 'react-native';
-import { Button } from 'react-native-elements'
 
 import {Images, Colors} from '../../themes'
 import { Badge, Avatar } from 'react-native-material-ui'
