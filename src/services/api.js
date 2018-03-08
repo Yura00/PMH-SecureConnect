@@ -8,7 +8,10 @@ import { toHexString } from '../utils/globalFuctions'
 
 // import sjcl from 'sjcl'
 
+// import RNCryptor from './RNCryptor'
+
 import { sha256 } from 'js-sha256'
+
 const SK = '0448641d6709747511a9e3aca9887dcb07205293827095cb1ff69a566eaa74656b5eec805f41f7ff87c17c25f4aa385936b3342581568cc6557802ed9b85872f41'
 const CK = '2226aeb2f8a7aee1cb3fa54c1b9710be8c84820626a91ebc7ffebff02e667efe'
 
@@ -17,24 +20,6 @@ export default (email, password) => {
         console.log('api===', email, password)
 
         encryptPW(password)
-        
-        // fetch(`${API_URL}/api/v1/password/forgot`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         email: email,
-        //     })
-        // })
-        // .then((res) => res.json()) 
-        // .then((data) => {
-        //     resolve(data.message)
-        // })
-        // setTimeout(() => {
-        //     resolve(true)
-        // }, 1000)
     })
 }
 
@@ -116,20 +101,14 @@ var body = JSON.stringify(input)
             }
         }
 
-//         var RNCryptor = require('jscryptor');
-// RNCryptor
-//         var bits = sjcl.codec.utf8String.toBits(pass);
-var options = {};
-	var encrypted = RNCryptor.Encrypt(secretKey, '123');
+            // var RNCryptor = require('jscryptor');
+    // RNCryptor
+    //         var bits = sjcl.codec.utf8String.toBits(password);
+    // var options = {};
+	// var encrypted = RNCryptor.Encrypt(secretKey, '123');
 	// var encryptedPassword = sjcl.codec.base64.fromBits(encrypted);
 	// return encryptedPassword;
         
         resolve(secretKey)
     })
-    // setTimeout(() => {
-    //     resolve(true)
-    // }, 1000)
-
-    // console.log('input body', input)
-
 }
