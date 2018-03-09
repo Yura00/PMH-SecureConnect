@@ -7,8 +7,10 @@ import { API_URL } from '../config/constants'
 import { toHexString } from '../utils/globalFuctions'
 
 // import sjcl from 'sjcl'
+// import RNCryptor from 'RNCryptor'
 
-// import RNCryptor from './RNCryptor'
+// import Aes from 'react-native-aes-crypto'
+// import CryptoJS from 'crypto-js'
 
 import { sha256 } from 'js-sha256'
 
@@ -23,20 +25,20 @@ export default (email, password) => {
     })
 }
 
-function encryptPW (password) {
+function encryptPW(password) {
     const EC = require('elliptic').ec;
     var _ec = new EC('secp256k1')
 
     var keyPair;
     var pubPoint;
-    var x,y;
+    var x, y;
 
     do {
         keyPair = _ec.genKeyPair();
         pubPoint = keyPair.getPublic();
         x = pubPoint.getX().toString('hex');
         y = pubPoint.getY().toString('hex');
-    } while ( !( x.length==64 && y.length==64 ) );
+    } while (!(x.length == 64 && y.length == 64));
 
     const key = "04" + x + y
 
@@ -57,7 +59,7 @@ function encryptPW (password) {
         "authentication": true,
         "signature": temp
     }
-var body = JSON.stringify(input)
+    var body = JSON.stringify(input)
     fetch(API_URL + 'performKeyExchange', {
         method: 'POST',
         headers: {
@@ -66,49 +68,115 @@ var body = JSON.stringify(input)
         },
         body: JSON.stringify(input)
     })
-    .then((res) => res.json()) 
-    .then((data) => {
+        .then((res) => res.json())
+        .then((data) => {
 
-        if(data.errorCode) {
-            console.log('performKeyExchange error======', data)
-            reject(data)
-        } else {
-            var signMessage = "" + data.x + data.y + data.exchangeId + data.base64;
-            var hash = sha256.create();
-            hash.update(signMessage);
-            var msgHash = hash.hex();
-            var verifyKey = _ec.keyFromPublic(SK, 'hex');
-            if (!verifyKey.verify(msgHash, data.signature)) {
-                reject("Signature verification failed============")
-            }
-            var serverKey = "04" + data.x + data.y;
-            exchangeId = data.exchangeId;
-            var key = _ec.keyFromPublic(serverKey, 'hex');
-            secretKey = keyPair.derive(key.getPublic()).toString("hex");
-            if (secretKey.length!=64) {
-                var len = secretKey.length - 64;
-                if (len < 0) {
-                    var iter = 0 - len;
-                    for (i = 0; i < iter; i++) {
-                        secretKey = "0" + secretKey;
-                    }
-                } else if (len > 0) {
-                    iter = len;
-                    for(i = 0; i < iter; i++){
-                        secretKey = secretKey.substring(1);
+            if (data.errorCode) {
+                console.log('performKeyExchange error======', data)
+                reject(data)
+            } else {
+                var signMessage = "" + data.x + data.y + data.exchangeId + data.base64;
+                var hash = sha256.create();
+                hash.update(signMessage);
+                var msgHash = hash.hex();
+                var verifyKey = _ec.keyFromPublic(SK, 'hex');
+                if (!verifyKey.verify(msgHash, data.signature)) {
+                    reject("Signature verification failed============")
+                }
+                var serverKey = "04" + data.x + data.y;
+                exchangeId = data.exchangeId;
+                var key = _ec.keyFromPublic(serverKey, 'hex');
+                secretKey = keyPair.derive(key.getPublic()).toString("hex");
+                if (secretKey.length != 64) {
+                    var len = secretKey.length - 64;
+                    if (len < 0) {
+                        var iter = 0 - len;
+                        for (i = 0; i < iter; i++) {
+                            secretKey = "0" + secretKey;
+                        }
+                    } else if (len > 0) {
+                        iter = len;
+                        for (i = 0; i < iter; i++) {
+                            secretKey = secretKey.substring(1);
+                        }
                     }
                 }
-            }
-        }
 
-            // var RNCryptor = require('jscryptor');
-    // RNCryptor
-    //         var bits = sjcl.codec.utf8String.toBits(password);
-    // var options = {};
-	// var encrypted = RNCryptor.Encrypt(secretKey, '123');
-	// var encryptedPassword = sjcl.codec.base64.fromBits(encrypted);
-	// return encryptedPassword;
-        
-        resolve(secretKey)
-    })
+                // var data = "Zyter@123";
+                // var key  = secretKey;
+                // var iv   = secretKey;  
+                // var encrypted = CryptoJS.AES.encrypt( data, key );
+                // console.log('encrypted: ' + encrypted) ;
+
+                // var decrypted = CryptoJS.AES.decrypt( encrypted,key );
+                // console.log('decrypted: '+decrypted.toString(CryptoJS.enc.Utf8));
+
+                // Aes.encrypt('Zyter@123', secretKey, 'Zyter@123').then((cipher) => {
+                //     console.log(cipher)
+                //     // { cipher, iv: ivBase64 }
+                // })
+
+                // var encryptedPassword = encrypt(secretKey, 'Zyter@123')
+
+
+                // var RNCryptor = require('jscryptor');
+                // RNCryptor
+                // var bits = sjcl.codec.utf8String.toBits(password);
+                var bits = toBits(password)
+
+                // var options = {};
+                // var encrypted = RNCryptor.Encrypt(secretKey, 'Zyter@123');
+                var encryptedPassword = fromBits(bits);
+                // return encryptedPassword;
+            }
+
+
+
+            resolve(secretKey)
+        })
 }
+
+function toBits(str) {
+    str = unescape(encodeURIComponent(str));
+    var out = [], i, tmp = 0;
+    for (i = 0; i < str.length; i++) {
+        tmp = tmp << 8 | str.charCodeAt(i);
+        if ((i & 3) === 3) {
+            out.push(tmp);
+            tmp = 0;
+        }
+    }
+    if (i & 3) {
+        out.push(partial(8 * (i & 3), tmp));
+    }
+    return out;
+}
+function partial(len, x, _end) {
+    if (len === 32) { return x; }
+    return (_end ? x | 0 : x << (32 - len)) + len * 0x10000000000;
+}
+
+
+
+function fromBits (arr) {
+    var out = "", bl = bitLength(arr), i, tmp;
+    for (i=0; i<bl/8; i++) {
+      if ((i&3) === 0) {
+        tmp = arr[i/4];
+      }
+      out += String.fromCharCode(tmp >>> 8 >>> 8 >>> 8);
+      tmp <<= 8;
+    }
+    return decodeURIComponent(escape(out));
+  }
+
+  function bitLength (a) {
+    var l = a.length, x;
+    if (l === 0) { return 0; }
+    x = a[l - 1];
+    return (l-1) * 32 + getPartial(x);
+  }
+  function getPartial (x) {
+    return Math.round(x/0x10000000000) || 32;
+  }
+
