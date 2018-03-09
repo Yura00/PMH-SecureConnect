@@ -9,7 +9,7 @@ import { Badge, Avatar } from 'react-native-material-ui'
 const MainTabNavigator = TabNavigator ({
     Contacts: {
       screen: Contacts,
-      path: '/',
+      // path: '/',
       navigationOptions: {
         title: 'Contacts',
         headerTitleStyle: GlobalStyle.pageTitle,
@@ -19,21 +19,21 @@ const MainTabNavigator = TabNavigator ({
     },
     Chats: {
       screen: Chats,
-      path: '/chats',
+      // path: '/chats',
       navigationOptions: {
         title: 'Chats',
         headerTitleStyle: [GlobalStyle.pageTitle, {marginTop: 30}],
         tabBarLabel: 'Chats',
         tabBarIcon: ({ tintColor }) => {
           return (
-            <View style={styles.tmp}>
-            <Badge
-              size={15}
-              text='5'
-              style={{ container: styles.chatBadgeContainer, content: styles.chatBadgeContent }}
-            >
-              <Image source={ tintColor !== Colors.default ? Images.icon_tab_chats : Images.icon_tab_chats_active} style={styles.icon} />
-            </Badge>
+            <View style={styles.chatsTab}>
+              <Badge
+                size={15}
+                text='5'
+                style={{ container: styles.chatBadgeContainer, content: styles.chatBadgeContent }}
+              >
+                <Image source={ tintColor !== Colors.default ? Images.icon_tab_chats : Images.icon_tab_chats_active} style={styles.icon} />
+              </Badge>
             </View>
           )
         }
@@ -59,6 +59,7 @@ const MainTabNavigator = TabNavigator ({
     }
   },
   {
+    initialRouteName: 'Contacts',
     tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: Colors.default,
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     height: 30,
     resizeMode: 'contain',
   },
-  tmp: {
+  chatsTab: {
     width: 50,
     height: 30,
     padding: 5,
