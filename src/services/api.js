@@ -102,35 +102,16 @@ function encryptPW(password) {
                     }
                 }
 
-                // var data = "Zyter@123";
-                // var key  = secretKey;
-                // var iv   = secretKey;  
-                // var encrypted = CryptoJS.AES.encrypt( data, key );
-                // console.log('encrypted: ' + encrypted) ;
-
-                // var decrypted = CryptoJS.AES.decrypt( encrypted,key );
-                // console.log('decrypted: '+decrypted.toString(CryptoJS.enc.Utf8));
-
-                // Aes.encrypt('Zyter@123', secretKey, 'Zyter@123').then((cipher) => {
-                //     console.log(cipher)
-                //     // { cipher, iv: ivBase64 }
-                // })
-
-                // var encryptedPassword = encrypt(secretKey, 'Zyter@123')
-
-
-                // var RNCryptor = require('jscryptor');
-                // RNCryptor
-                // var bits = sjcl.codec.utf8String.toBits(password);
+                password = "Zyter@123";
                 var bits = toBits(password)
-
-                // var options = {};
-                // var encrypted = RNCryptor.Encrypt(secretKey, 'Zyter@123');
                 var encryptedPassword = fromBits(bits);
+                
+                // var options = {};
+                // var bits = sjcl.codec.utf8String.toBits(password);
+                // var encrypted = RNCryptor.Encrypt(secretKey, 'Zyter@123');
+                // var encryptedPassword = fromBits(encrypted);
                 // return encryptedPassword;
             }
-
-
 
             resolve(secretKey)
         })
@@ -158,25 +139,25 @@ function partial(len, x, _end) {
 
 
 
-function fromBits (arr) {
+function fromBits(arr) {
     var out = "", bl = bitLength(arr), i, tmp;
-    for (i=0; i<bl/8; i++) {
-      if ((i&3) === 0) {
-        tmp = arr[i/4];
-      }
-      out += String.fromCharCode(tmp >>> 8 >>> 8 >>> 8);
-      tmp <<= 8;
+    for (i = 0; i < bl / 8; i++) {
+        if ((i & 3) === 0) {
+            tmp = arr[i / 4];
+        }
+        out += String.fromCharCode(tmp >>> 8 >>> 8 >>> 8);
+        tmp <<= 8;
     }
     return decodeURIComponent(escape(out));
-  }
+}
 
-  function bitLength (a) {
+function bitLength(a) {
     var l = a.length, x;
     if (l === 0) { return 0; }
     x = a[l - 1];
-    return (l-1) * 32 + getPartial(x);
-  }
-  function getPartial (x) {
-    return Math.round(x/0x10000000000) || 32;
-  }
+    return (l - 1) * 32 + getPartial(x);
+}
+function getPartial(x) {
+    return Math.round(x / 0x10000000000) || 32;
+}
 
