@@ -17,7 +17,6 @@ class ViewProfile extends Component {
       email: 'amily@gmail.com',
       message: 'Be back in 20 mins...'
     }
-    console.log(props)
   }
 
   render() {
@@ -34,101 +33,101 @@ class ViewProfile extends Component {
     }
 
     return (
-        <View style={GlobalStyle.pageContainer}>
-          <View style={styles.topBar}>
-            <Image source={Images.bg_profile} style={styles.topBackground} />
-            <TouchableOpacity style={styles.drawerContainer} onPress={() => this.props.navigation.goBack()}>
-              <MaterialCommunityIcons name='chevron-left' size={30} color={'white'} />
-            </TouchableOpacity>
-            <Image source={Images.img_me} style={styles.avatar} />
-            <View style={styles.titleContent}>
-              <Text style={styles.username}> {username} </Text>
-              <Text style={styles.phone}> {userData.phone} </Text>
-            </View>
-            <View style={styles.topActionscontainer}>
-              <TouchableOpacity style={[styles.actionContainer, {backgroundColor: Colors.lightblue}]}>
-                <Image source={Images.icon_comment_left} style={styles.actionIcon}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.actionContainer, {backgroundColor: Colors.green, bottom: -20}]}>
-                <Image source={Images.icon_emergency} style={styles.actionIcon}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.actionContainer, {backgroundColor: Colors.orange, bottom: -20}]}>
-                <Image source={Images.icon_camera} style={styles.actionIcon}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.actionContainer, {backgroundColor: Colors.green}]}>
-                <Image source={Images.icon_phone} style={styles.actionIcon}/>
-              </TouchableOpacity>
-            </View>
+      <View style={GlobalStyle.pageContainer}>
+        <View style={styles.topBar}>
+          <Image source={Images.bg_profile} style={styles.topBackground} />
+          <TouchableOpacity style={styles.drawerContainer} onPress={() => this.props.navigation.goBack()}>
+            <MaterialCommunityIcons name='chevron-left' size={30} color={'white'} />
+          </TouchableOpacity>
+          <Image source={Images.img_me} style={styles.avatar} />
+          <View style={styles.titleContent}>
+            <Text style={styles.username}> {username} </Text>
+            <Text style={styles.phone}> {userData.phone} </Text>
           </View>
+          <View style={styles.topActionscontainer}>
+            <TouchableOpacity style={[styles.actionContainer, {backgroundColor: Colors.lightblue}]}>
+              <Image source={Images.icon_comment_left} style={styles.actionIcon}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.actionContainer, {backgroundColor: Colors.green, bottom: -20}]}>
+              <Image source={Images.icon_emergency} style={styles.actionIcon}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.actionContainer, {backgroundColor: Colors.orange, bottom: -20}]}>
+              <Image source={Images.icon_camera} style={styles.actionIcon}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.actionContainer, {backgroundColor: Colors.green}]}>
+              <Image source={Images.icon_phone} style={styles.actionIcon}/>
+            </TouchableOpacity>
+          </View>
+        </View>
 
-          <View style={styles.mainContent}>
-            <View style={styles.listItem}>
-              <Text style={styles.itemTitle}> Title </Text>
-              <Text style={styles.itemValue}> {this.state.title} </Text>
-            </View>
-            <View style={styles.listItem}>
-              <Text style={styles.itemTitle}> Department </Text>
-              <Text style={styles.itemValue}> {this.state.department} </Text>
-            </View>
-            <View style={styles.listItem}>
-              <Text style={styles.itemTitle}> Email </Text>
-              <Text style={styles.itemValue}> {userData.email} </Text>
-            </View>
-            <View style={styles.listItem}>
-              <Text style={styles.itemTitle}> Message </Text>
-              <Text style={styles.itemValue}> {this.state.message} </Text>
-            </View>
-            <View style={styles.statusContainer}>
-              <Text style={styles.itemTitle}> Online Status </Text>
-              <View style={styles.statusSelection}>
-                <View style={styles.statusItem}>
-                  <View style={
-                      [styles.statusIcon,
-                      {
-                        backgroundColor: userData.status === 'online' ? Colors.online : 'transparent',
-                        borderWidth: userData.status === 'online' ? 0 : 1
-                      }]
-                    }
-                  />
-                  <Text style={styles.statusText}> Online </Text>
-                </View>
-                <View style={styles.statusItem}>
+        <View style={styles.mainContent}>
+          <View style={styles.listItem}>
+            <Text style={styles.itemTitle}> Title </Text>
+            <Text style={styles.itemValue}> {this.state.title} </Text>
+          </View>
+          <View style={styles.listItem}>
+            <Text style={styles.itemTitle}> Department </Text>
+            <Text style={styles.itemValue}> {this.state.department} </Text>
+          </View>
+          <View style={styles.listItem}>
+            <Text style={styles.itemTitle}> Email </Text>
+            <Text style={styles.itemValue}> {userData.email} </Text>
+          </View>
+          <View style={styles.listItem}>
+            <Text style={styles.itemTitle}> Message </Text>
+            <Text style={styles.itemValue}> {this.state.message} </Text>
+          </View>
+          <View style={styles.statusContainer}>
+            <Text style={styles.itemTitle}> Online Status </Text>
+            <View style={styles.statusSelection}>
+              <View style={styles.statusItem}>
                 <View style={
-                      [styles.statusIcon,
-                      {
-                        backgroundColor: userData.status === 'offline' ? Colors.offline : 'transparent',
-                        borderWidth: userData.status === 'offline' ? 0 : 1
-                      }]
-                    }
-                  />
-                  <Text style={styles.statusText}> Offline </Text>
-                </View>
-                <View style={styles.statusItem}>
-                  <View style={
-                      [styles.statusIcon,
-                      {
-                        backgroundColor: userData.status === 'away' ? Colors.away : 'transparent',
-                        borderWidth: userData.status === 'away' ? 0 : 1
-                      }]
-                    }
-                  />
-                  <Text style={styles.statusText}> Away </Text>
-                </View>
-                <View style={styles.statusItem}>
-                  <View style={
-                      [styles.statusIcon,
-                      {
-                        backgroundColor: userData.status === 'disturb' ? Colors.disturb : 'transparent',
-                        borderWidth: userData.status === 'disturb' ? 0 : 1
-                      }]
-                    }
-                  />
-                  <Text style={styles.statusText}> Do not disturb </Text>
-                </View>
+                    [styles.statusIcon,
+                    {
+                      backgroundColor: userData.status === 'online' ? Colors.online : 'transparent',
+                      borderWidth: userData.status === 'online' ? 0 : 1
+                    }]
+                  }
+                />
+                <Text style={styles.statusText}> Online </Text>
+              </View>
+              <View style={styles.statusItem}>
+              <View style={
+                    [styles.statusIcon,
+                    {
+                      backgroundColor: userData.status === 'offline' ? Colors.offline : 'transparent',
+                      borderWidth: userData.status === 'offline' ? 0 : 1
+                    }]
+                  }
+                />
+                <Text style={styles.statusText}> Offline </Text>
+              </View>
+              <View style={styles.statusItem}>
+                <View style={
+                    [styles.statusIcon,
+                    {
+                      backgroundColor: userData.status === 'away' ? Colors.away : 'transparent',
+                      borderWidth: userData.status === 'away' ? 0 : 1
+                    }]
+                  }
+                />
+                <Text style={styles.statusText}> Away </Text>
+              </View>
+              <View style={styles.statusItem}>
+                <View style={
+                    [styles.statusIcon,
+                    {
+                      backgroundColor: userData.status === 'disturb' ? Colors.disturb : 'transparent',
+                      borderWidth: userData.status === 'disturb' ? 0 : 1
+                    }]
+                  }
+                />
+                <Text style={styles.statusText}> Do not disturb </Text>
               </View>
             </View>
           </View>
         </View>
+      </View>
     );
   }
 }
