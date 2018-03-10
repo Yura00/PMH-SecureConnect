@@ -40,9 +40,9 @@ class CallDialog extends Component {
           </View>
         </View>
 
-        <View style={styles.footer}>
-          <Button onPress={() => this.setState({showDialog: !this.state.showDialog})} style={styles.cancelButton} title="Cancel" />
-        </View>
+        <TouchableOpacity style={styles.footer} onPress={() => this.setState({showDialog: !this.state.showDialog})}>
+          <Text style={styles.cancelButton}> CANCEL </Text>
+        </TouchableOpacity>
 
       </Dialog>
     );

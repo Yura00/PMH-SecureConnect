@@ -32,9 +32,10 @@ export default StyleSheet.create({
   message: {
     width: '90%',
     height: 100,
-    padding: 20,
+    padding: 10,
     backgroundColor: '#F0F0F0',
-    borderRadius: 5
+    borderRadius: 5,
+    textAlignVertical: 'top'
   },
   note: {
     width: '90%',

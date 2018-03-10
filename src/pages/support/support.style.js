@@ -55,10 +55,11 @@ export default StyleSheet.create({
   },
   commentText: {
     flex: 1,
-    padding: 20,
+    padding: 10,
     borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
     borderColor: 'lightgray',
+    textAlignVertical: 'top'
   },
   footerContainer: {
     flex: 0.5,

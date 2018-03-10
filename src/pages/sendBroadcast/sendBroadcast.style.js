@@ -15,9 +15,10 @@ export default StyleSheet.create({
   },
   commentText: {
     flex: 0.4,
-    padding: 20,
+    padding: 10,
     backgroundColor: '#F0F0F0',
-    borderRadius: 5
+    borderRadius: 5,
+    textAlignVertical: 'top'
   },
   buttonContainer: {
     padding: 20

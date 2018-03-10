@@ -46,13 +46,17 @@ export default StyleSheet.create({
     resizeMode: 'contain'
   },
   footer: {
+    width: '100%',
+    height: 50,
     marginTop: 10,
-    alignSelf: 'stretch',
-    borderTopColor: 'lightgray',
-    borderTopWidth: 1
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTopColor: '#F0F0F0',
+    borderTopWidth: 1,
+    backgroundColor: 'transparent',
   },
   cancelButton: {
-    marginTop: 10,
-    flex: 1
+    color: Colors.default,
+    fontSize: 16
   }
 });
