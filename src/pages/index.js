@@ -5,10 +5,13 @@ export { default as Contacts } from './contacts'
 export { default as Chats } from './chats'
 export { default as Notifications } from './notifications'
 export { default as Channels } from './channels'
+
 export { default as ViewProfile } from './viewProfile'
 export { default as Chat } from './chat'
 export { default as SelectContact } from './selectContact'
 export { default as NewGroup } from './newGroup'
+export { default as SendBroadcast } from './sendBroadcast'
+
 export { default as FileSharing } from './fileSharing'
 export { default as ChangeBackup } from './changeBackup'
 export { default as EditProfile } from './editProfile'

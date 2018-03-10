@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, ListView } from 'react-native';
-import { AtoZList, TopBar, ChatListItem, Switch } from '../../components'
-import { GlobalStyle } from '../../themes'
+import { View, Text, ListView, Image, Alert } from 'react-native';
+import ActionButton from 'react-native-action-button'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { AtoZList, TopBar, ChatListItem, Switch, EmergencyDialog } from '../../components'
+import { GlobalStyle, Colors, Images } from '../../themes'
 import styles from './notifications.style'
 
 import data from '../mockData'
@@ -58,9 +60,19 @@ const formatData = function(data) {
   return result
 }
 
-class Notifications  extends Component {
+class Notifications extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showDialog: false
+    }
+  }
+
+  openEmergencyDialog (userData) {
+    this.setState({
+      showDialog: true,
+      userData: userData
+    })
   }
 
   render() {
@@ -68,7 +80,7 @@ class Notifications  extends Component {
     return (
       <View style={GlobalStyle.pageContainer}>
         <TopBar hasContent>
-          <Switch 
+          <Switch
             value={false}
             onValueChange={(val) => console.log(val)}
             activeText={'Broadcast'}
@@ -82,9 +94,15 @@ class Notifications  extends Component {
           sectionHeaderHeight={0}
           cellHeight={60}
           data={listData}
-          renderCell={(data) => <ChatListItem {...data} onPress={() => this.props.navigation.navigate('Chat', {data: data})}/>}
+          renderCell={(data) => <ChatListItem {...data} onPress={() => this.openEmergencyDialog(data)}/>}
           renderSection={(data) => <View style={styles.separator} />}
         />
+        <ActionButton
+          buttonColor={Colors.lightblue}
+          renderIcon={() => <MaterialCommunityIcons name='send' size={30} color={'white'} />}
+          onPress={() => this.props.navigation.navigate('SendBroadcast')}
+        />
+        <EmergencyDialog userData={this.state.userData} showDialog={this.state.showDialog}/>
       </View>
     );
   }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Image, ListView } from 'react-native';
+import ActionButton from 'react-native-action-button'
 import { AtoZList, ChatListItem, TopBar } from '../../components'
 import { Images, Colors, GlobalStyle } from '../../themes'
 import styles from './chats.style'
 
-import ActionButton from 'react-native-action-button'
 import data from '../mockData'
 
 const formatData = function(data) {
@@ -59,26 +59,13 @@ const formatData = function(data) {
   return result
 }
 
-class Chats  extends Component {
-  constructor(props) {
-    super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows(data),
-    };
-  }
+class Chats extends Component {
 
   render() {
     const listData = formatData(data)
     return (
       <View style={GlobalStyle.pageContainer}>
         <TopBar />
-        {/* <ListView
-          style={styles.listView}
-          dataSource={this.state.dataSource}
-          renderRow={(data) => <ChatListItem {...data} />}
-          renderSeparator={(sectionId, rowId) => <View style={styles.separator} />}
-        /> */}
         <AtoZList
           style={styles.listView}
           sectionHeaderHeight={0}
@@ -87,10 +74,9 @@ class Chats  extends Component {
           renderCell={(data) => <ChatListItem {...data} onPress={() => this.props.navigation.navigate('Chat', {data: data})}/>}
           renderSection={(data) => <View style={styles.separator} />}
         />
-        <ActionButton 
+        <ActionButton
           buttonColor={Colors.lightblue}
           renderIcon={() => <Image source={Images.icon_comment_left} style={styles.actionButtonIcon} />}
-          // onPress={() => this.props.navigation.navigate('NewGroup')}
           onPress={() => this.props.navigation.navigate('SelectContact')}
         />
           

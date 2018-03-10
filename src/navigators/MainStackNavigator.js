@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native'
 import { StackNavigator } from 'react-navigation';
-import { ViewProfile, Chat, NewGroup, SelectContact } from '../pages'
+import { ViewProfile, Chat, NewGroup, SelectContact, SendBroadcast } from '../pages'
 import MainTabNavigator from './MainTabNavigator'
 import { Images, Colors, GlobalStyle } from '../themes'
 import { Drawer } from '../components'
@@ -34,6 +34,13 @@ export const MainStackNavigator = StackNavigator(
         screen: NewGroup,
         navigationOptions: {
           title: 'New Group',
+          headerTitleStyle: GlobalStyle.pageTitle
+        }
+      },
+      SendBroadcast: {
+        screen: SendBroadcast,
+        navigationOptions: {
+          title: 'Send Broadcast',
           headerTitleStyle: GlobalStyle.pageTitle
         }
       }

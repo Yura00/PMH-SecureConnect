@@ -5,7 +5,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Swipeable from 'react-native-swipeable'
 import styles from './contactListItem.style'
 import { Colors, Images } from '../../themes'
-import { Dialog } from 'react-native-simple-dialogs'
 import { LeftSwipeItem, RightSwipeItem, CallDialog, Checkbox } from '../'
 
 class ContactListItem  extends Component {
@@ -54,57 +53,29 @@ class ContactListItem  extends Component {
             />
           ]}
           rightButtons={[
-            <RightSwipeItem 
-              source={Images.icon_emergency} 
-              label='Emergency' 
+            <RightSwipeItem
+              source={Images.icon_emergency}
+              label='Emergency'
               size={90}
               backgroundColor={Colors.darkred}
               onPress={() => console.log('Emergency clicked')}
             />,
-            <RightSwipeItem 
-              source={Images.icon_comment_left} 
-              label='Chat' 
+            <RightSwipeItem
+              source={Images.icon_comment_left}
+              label='Chat'
               size={90}
               backgroundColor={Colors.orange}
               onPress={() => console.log('Chat clicked')}
             />,
-            <RightSwipeItem 
-              source={Images.icon_phone} 
-              label='Call' 
+            <RightSwipeItem
+              source={Images.icon_phone}
+              label='Call'
               size={90}
               backgroundColor={Colors.green}
               onPress={() => this.setState({showDialog: true})}
             />
           ]}
         >
-
-        {/* <CallDialog showDialog={this.state.showDialog}/> */}
-
-          <Dialog
-            visible={this.state.showDialog}
-            onTouchOutside={() => this.setState({showDialog: false})}
-            contentStyle={{ justifyContent: 'center', alignItems: 'center', padding: 0, backgroundColor: 'white', borderRadius: 5 }}
-            animationType="fade"
-          >
-            <View style={{flexDirection: 'row', marginBottom: 10}}>
-              <View style={{flexDirection: 'column',flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor: Colors.orange, padding: 8, margin: 5}}>
-                  <Image source={Images.icon_camera} style={{width: 20, height: 20, resizeMode: 'contain'}}/>
-                </View>
-                <Text style={{color: 'black'}}>Video</Text>
-              </View>
-              <View style={{flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor:Colors.green, padding: 10, margin: 5}}>
-                  <Image source={Images.icon_phone} style={{width: 16, height: 16, resizeMode: 'contain'}}/>
-                </View>
-                <Text style={{color: 'black'}}>Audio</Text>
-              </View>
-            </View>
-            <View style={{marginTop: 10, alignSelf: 'stretch', borderTopColor: 'lightgray', borderTopWidth: 1}}>
-              <Button onPress={() => this.setState({showDialog: !this.state.showDialog})} style={{ marginTop: 10, flex: 1 }} title="Cancel" />
-            </View>
-          </Dialog>
-
 
           <TouchableOpacity style={styles.container} onPress={() => this.onPress()}>
 
@@ -129,18 +100,21 @@ class ContactListItem  extends Component {
 
             <View style={styles.container2}>
             {
-              this.props.fromNewGroup 
+              this.props.fromNewGroup
               ? <Checkbox
-                  style={{flex: 1, padding: 10}}
-                  onClick={() => this.setState({ isChecked: !this.state.isChecked })}
-                  isChecked={this.state.isChecked}
-                />
+              style={{flex: 1, padding: 10}}
+              onClick={() => this.setState({ isChecked: !this.state.isChecked })}
+              isChecked={this.state.isChecked}
+              />
               : <MaterialIcons name='chevron-right' size={30} color={'lightgray'} />
             }
             </View>
 
           </TouchableOpacity>
         </Swipeable>
+
+        <CallDialog showDialog={this.state.showDialog}/>
+
       </TouchableOpacity>
     );
   }

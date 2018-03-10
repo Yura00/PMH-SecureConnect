@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { TopBar } from '../../components'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { GlobalStyle } from '../../themes'
 import styles from './viewProfile.style'
 import { Images, Colors } from '../../themes'
 
-class ViewProfile  extends Component {
+class ViewProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,8 @@ class ViewProfile  extends Component {
       title: 'CEO',
       department: 'CNA(L-MS61)',
       phone: '+1 915 320 2987',
-      email: 'amily@gmail.com'
+      email: 'amily@gmail.com',
+      message: 'Be back in 20 mins...'
     }
     console.log(props)
   }
@@ -22,7 +23,16 @@ class ViewProfile  extends Component {
   render() {
     const userData = this.props.navigation.state.params.data
     const username = userData.name.first + ' ' + userData.name.last
-    const message = 'Be back in 20 mins...'
+
+    var statusColor = Colors.offline
+    if (userData.status === 'online') {
+      statusColor = Colors.online
+    } else if (userData.status === 'away') {
+      statusColor = Colors.away
+    } else if (userData.status === 'disturb') {
+      statusColor = Colors.disturb
+    }
+
     return (
         <View style={GlobalStyle.pageContainer}>
           <View style={styles.topBar}>
@@ -54,47 +64,68 @@ class ViewProfile  extends Component {
           <View style={styles.mainContent}>
             <View style={styles.listItem}>
               <Text style={styles.itemTitle}> Title </Text>
-              <TextInput
-                style={styles.itemValue}
-                value={this.state.title}
-                underlineColorAndroid='transparent'
-                onChangeText={(title) => this.setState({title: title})}
-              />
+              <Text style={styles.itemValue}> {this.state.title} </Text>
             </View>
             <View style={styles.listItem}>
               <Text style={styles.itemTitle}> Department </Text>
-              <TextInput
-                style={styles.itemValue}
-                value={this.state.department}
-                underlineColorAndroid='transparent'
-                onChangeText={(department) => this.setState({department: department})}
-              />
+              <Text style={styles.itemValue}> {this.state.department} </Text>
             </View>
             <View style={styles.listItem}>
               <Text style={styles.itemTitle}> Email </Text>
-              <TextInput
-                style={styles.itemValue}
-                value={userData.email}
-                underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}
-              />
-              <Image source={Images.icon_verify} style={styles.verifyIcon} />
+              <Text style={styles.itemValue}> {userData.email} </Text>
             </View>
             <View style={styles.listItem}>
               <Text style={styles.itemTitle}> Message </Text>
-              <TextInput
-                style={styles.itemValue}
-                value={message}
-                underlineColorAndroid='transparent'
-                onChangeText={(email) => this.setState({email: email})}
-              />
+              <Text style={styles.itemValue}> {this.state.message} </Text>
             </View>
-            <View style={styles.listItem}>
+            <View style={styles.statusContainer}>
               <Text style={styles.itemTitle}> Online Status </Text>
-              <Image source={Images.icon_verify} style={styles.verifyIcon} />
-              <Image source={Images.icon_verify} style={styles.verifyIcon} />
-              <Image source={Images.icon_verify} style={styles.verifyIcon} />
-              <Image source={Images.icon_verify} style={styles.verifyIcon} />
+              <View style={styles.statusSelection}>
+                <View style={styles.statusItem}>
+                  <View style={
+                      [styles.statusIcon,
+                      {
+                        backgroundColor: userData.status === 'online' ? Colors.online : 'transparent',
+                        borderWidth: userData.status === 'online' ? 0 : 1
+                      }]
+                    }
+                  />
+                  <Text style={styles.statusText}> Online </Text>
+                </View>
+                <View style={styles.statusItem}>
+                <View style={
+                      [styles.statusIcon,
+                      {
+                        backgroundColor: userData.status === 'offline' ? Colors.offline : 'transparent',
+                        borderWidth: userData.status === 'offline' ? 0 : 1
+                      }]
+                    }
+                  />
+                  <Text style={styles.statusText}> Offline </Text>
+                </View>
+                <View style={styles.statusItem}>
+                  <View style={
+                      [styles.statusIcon,
+                      {
+                        backgroundColor: userData.status === 'away' ? Colors.away : 'transparent',
+                        borderWidth: userData.status === 'away' ? 0 : 1
+                      }]
+                    }
+                  />
+                  <Text style={styles.statusText}> Away </Text>
+                </View>
+                <View style={styles.statusItem}>
+                  <View style={
+                      [styles.statusIcon,
+                      {
+                        backgroundColor: userData.status === 'disturb' ? Colors.disturb : 'transparent',
+                        borderWidth: userData.status === 'disturb' ? 0 : 1
+                      }]
+                    }
+                  />
+                  <Text style={styles.statusText}> Do not disturb </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>

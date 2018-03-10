@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Badge, Avatar } from 'react-native-material-ui'
+import { View, Text, Button, Image, TouchableOpacity } from 'react-native';
 import { Dialog } from 'react-native-simple-dialogs'
-
+import { Images } from '../../themes'
 import styles from './callDialog.style'
 
 class CallDialog extends Component {
@@ -13,41 +12,36 @@ class CallDialog extends Component {
     }
   }
 
-  render() {
-    var statusColor = 'gray'
-    if (this.props.status === 'online') {
-      statusColor = 'green'
-    } else if (this.props.status === 'away') {
-      statusColor = 'orange'
-    } else if (this.props.status === 'disturb') {
-      statusColor = 'darkred'
-    }
+  componentWillReceiveProps (nextProps) {
+    this.setState({showDialog: nextProps.showDialog})
+  }
 
+  render() {
     return (
       <Dialog
+        contentStyle={styles.content}
         visible={this.state.showDialog}
         onTouchOutside={() => this.setState({showDialog: false})}
-        contentStyle={{ justifyContent: 'center', alignItems: 'center', padding: 0, backgroundColor: 'white', borderRadius: 5 }}
         animationType="fade"
       >
 
-        <View style={{flexDirection: 'row', marginBottom: 10}}>
-          <View style={{flexDirection: 'column',flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor: Colors.orange, padding: 8, margin: 5}}>
-              <Image source={Images.icon_camera} style={{width: 20, height: 20, resizeMode: 'contain'}}/>
-            </View>
+        <View style={styles.container}>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.videoButton}>
+              <Image source={Images.icon_camera} style={styles.videoIcon}/>
+            </TouchableOpacity>
             <Text style={{color: 'black'}}>Video</Text>
           </View>
-          <View style={{flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <View style={{width: 36, height: 36, borderRadius: 36, backgroundColor:Colors.green, padding: 10, margin: 5}}>
-              <Image source={Images.icon_phone} style={{width: 16, height: 16, resizeMode: 'contain'}}/>
-            </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.audioButton}>
+              <Image source={Images.icon_phone} style={styles.audioIcon}/>
+            </TouchableOpacity>
             <Text style={{color: 'black'}}>Audio</Text>
           </View>
         </View>
 
-        <View style={{marginTop: 10, alignSelf: 'stretch', borderTopColor: 'lightgray', borderTopWidth: 1}}>
-          <Button onPress={() => this.setState({showDialog: !this.state.showDialog})} style={{ marginTop: 10, flex: 1 }} title="Cancel" />
+        <View style={styles.footer}>
+          <Button onPress={() => this.setState({showDialog: !this.state.showDialog})} style={styles.cancelButton} title="Cancel" />
         </View>
 
       </Dialog>

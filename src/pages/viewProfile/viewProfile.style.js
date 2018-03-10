@@ -71,21 +71,45 @@ export default StyleSheet.create({
   listItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 50,
+    height: 45,
     borderBottomWidth: 1,
     borderColor: 'lightgray'
   },
   itemTitle: {
-    color: 'gray'
+    color: 'gray',
+    fontSize: 14
   },
   itemValue: {
     flex: 1,
     color: 'black',
     textAlign: 'right'
   },
-  verifyIcon: {
-    width: 16,
-    height: 16,
-    margin: 7
+  statusContainer: {
+    paddingVertical: 10,
+    flexDirection: 'column',
+  },
+  statusSelection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+  },
+  statusItem: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  statusIcon: {
+    width: 22,
+    height: 22,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: 'gray',
+    marginBottom: 5
+  },
+  statusText: {
+    fontSize: 11,
+    fontWeight: '500'
   }
 });
