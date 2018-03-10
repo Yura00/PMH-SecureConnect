@@ -1,7 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, KeyboardAvoidingView, View, Text, Image, TextInput, Alert, Switch } from 'react-native'
 import { LoginInput, ShadowButton } from '../../components'
-import Swiper from 'react-native-swiper'
 import Hyperlink from 'react-native-hyperlink'
 import { connect } from 'react-redux'
 import { userLogin } from '../../actions'

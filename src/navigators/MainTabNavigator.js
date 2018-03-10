@@ -89,7 +89,8 @@ const MainTabNavigator = TabNavigator ({
     },
     animationEnabled: true,
     gestureEnabled: false,
-    swipeEnabled: false
+    swipeEnabled: false,
+    lazy: false //fix second tab rendering error
   }
 );
 
