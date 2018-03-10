@@ -6,7 +6,6 @@ export default {
         color: 'white',
         textAlign: 'center', // center header title for Android
         alignSelf:'center', // center header title for Android,
-        backgroundColor: 'blue'
     },
     pageContainer: {
         flex: 1,

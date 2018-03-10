@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 	container: {
-		// position: 'absolute',
-		// bottom: 20,
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -15,20 +13,15 @@ export default StyleSheet.create({
 		flex: 1,
 		flexDirection: 'row',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	circle: {
-		backgroundColor: 'white',
+		backgroundColor: 'white'
 	},
 	text: {
+		textAlign: 'center',
 		color: 'gray',
 		fontSize: 12,
-		zIndex:10
-	},
-	paddingRight: {
-		// paddingRight: 5
-	},
-	paddingLeft: {
-		// paddingLeft: 5,
+		zIndex:10,
 	}
-  });
+});

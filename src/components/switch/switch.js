@@ -39,9 +39,6 @@ export default class Switch extends Component {
 			rightLabelColor: props.value ? '#0f5fad' : 'white',
 			transformSwitch: new Animated.Value(props.value ? props.barWidth / 4 : -props.barWidth / 4)
 		};
-
-		// this.handleSwitch = this.handleSwitch.bind(this);
-		// this.animateSwitch = this.animateSwitch.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -57,17 +54,17 @@ export default class Switch extends Component {
 	handleSwitch() {
 		const { value } = this.state;
 		const { onValueChange } = this.props;
-		
+
 		this.setState({
 			leftLabelColor: value ? '#0f5fad' : 'white',
 			rightLabelColor: !value ? '#0f5fad' : 'white',
 		});
 
+		onValueChange(!this.state.value)
 		this.animateSwitch(!value, () => {
-			this.setState({ 
+			this.setState({
 				value: !value,
 			}, () => {
-				onValueChange(this.state.value)
 			});
 		});
 	}
@@ -80,11 +77,11 @@ export default class Switch extends Component {
 		]).start(cb);
 	}
 
-	measureLeftLabel (event) {
-		this.setState({leftLabelWidth: event.nativeEvent.layout.width})
+	measureLeftLabel(event) {
+		this.setState({ leftLabelWidth: event.nativeEvent.layout.width })
 	}
-	measureRightLabel (event) {
-		this.setState({rightLabelWidth: event.nativeEvent.layout.width})
+	measureRightLabel(event) {
+		this.setState({ rightLabelWidth: event.nativeEvent.layout.width })
 	}
 
 	render() {
@@ -105,29 +102,28 @@ export default class Switch extends Component {
 			barHeight,
 		} = this.props;
 
-    	return (
+		return (
 			<TouchableWithoutFeedback
 				onPress={() => this.handleSwitch()}
 			>
 				<Animated.View
 					style={[
 						styles.container,
-						{ 
-							width: barWidth, 
-							height: barHeight, 
-							borderRadius: barHeight/2 
+						{
+							width: barWidth,
+							height: barHeight,
+							borderRadius: barHeight / 2
 						}
 					]}
 				>
-					<Text 
-						onLayout={(event)=>this.measureLeftLabel(event)} 
+					<Text
+						onLayout={(event) => this.measureLeftLabel(event)}
 						style={[
-							styles.text, 
-							styles.paddingRight, 
-							activeTextStyle, 
+							styles.text,
+							activeTextStyle,
 							{
+								width: barWidth / 2,
 								color: leftLabelColor,
-								marginLeft: barWidth/4-leftLabelWidth/2
 							}
 						]}
 					>
@@ -139,26 +135,25 @@ export default class Switch extends Component {
 							{ left: transformSwitch, width: barWidth },
 						]}
 					>
-						<Animated.View 
+						<Animated.View
 							style={[
-								styles.circle, 
-								{ 
-									width: barWidth/2, 
-									height: barHeight, 
-									borderRadius: barHeight / 2 
+								styles.circle,
+								{
+									width: barWidth / 2,
+									height: barHeight,
+									borderRadius: barHeight / 2
 								}
-							]} 
+							]}
 						/>
 					</Animated.View>
-					<Text 
-						onLayout={(event)=>this.measureRightLabel(event)} 
+					<Text
+						onLayout={(event) => this.measureRightLabel(event)}
 						style={[
-							styles.text, 
-							styles.paddingLeft, 
-							inactiveTextStyle, 
+							styles.text,
+							inactiveTextStyle,
 							{
+								width: barWidth / 2,
 								color: rightLabelColor,
-								marginRight: barWidth/4-rightLabelWidth/2
 							}
 						]}
 					>
