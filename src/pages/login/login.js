@@ -35,8 +35,8 @@ class Login extends React.Component {
   }
 
   login () {
-    // this.props.userLogin(this.state.username, this.state.password)
-    this.state.isTouchID ? this.props.navigation.navigate('TouchID') : this.props.navigation.navigate('RootDrawerNavigator')
+    this.props.userLogin(this.state.username, this.state.password)
+    // this.state.isTouchID ? this.props.navigation.navigate('TouchID') : this.props.navigation.navigate('RootDrawerNavigator')
   }
   
   render() {

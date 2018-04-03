@@ -9,13 +9,24 @@ import { toHexString } from '../utils/globalFuctions'
 // import sjcl from 'sjcl'
 // import RNCryptor from 'RNCryptor'
 
+// import { Platform } from 'react-native'
 // import Aes from 'react-native-aes-crypto'
-// import CryptoJS from 'crypto-js'
+// import Aes from 'react-native-aes-crypto'
+import CryptoJS from 'crypto-js'
 
 import { sha256 } from 'js-sha256'
 
 const SK = '0448641d6709747511a9e3aca9887dcb07205293827095cb1ff69a566eaa74656b5eec805f41f7ff87c17c25f4aa385936b3342581568cc6557802ed9b85872f41'
 const CK = '2226aeb2f8a7aee1cb3fa54c1b9710be8c84820626a91ebc7ffebff02e667efe'
+
+
+// const encrypt = (text, keyBase64) => {
+//     var ivBase64 = "base64 random 16 bytes string";
+//     return Aes.encrypt(text, keyBase64, ivBase64).then(cipher => ({ cipher, iv: ivBase64 }));
+// };
+ 
+// const decrypt = (encryptedData, key) => Aes.decrypt(encryptedData.cipher, key, encryptedData.iv);
+
 
 export default (email, password) => {
     return new Promise((resolve, reject) => {
@@ -102,9 +113,22 @@ function encryptPW(password) {
                     }
                 }
 
-                password = "Zyter@123";
-                var bits = toBits(password)
-                var encryptedPassword = fromBits(bits);
+                var pw = ('Zyter@123')
+                var key = CryptoJS.enc.Base64.parse("9807e20d2354f25c9e33aed4b01b8722a9839b564f2c5526f3f10264be9d77ef");
+
+                var ciphertext = encrypt(pw, key)
+                // var base64 = CryptoJS.enc.Base64.parse(ciphertext);
+                // var utf8 = ciphertext.toString(CryptoJS.enc.Utf8);
+
+                // CryptoJS.enc.Utf8.parse(plainText)
+
+                var plaintext = decrypt(ciphertext, key);
+                var plaintext = plaintext.toString();
+                console.log("decrypted text", plaintext);
+
+                // password = "Zyter@123";
+                // var bits = toBits(password)
+                // var encryptedPassword = fromBits(bits);
                 
                 // var options = {};
                 // var bits = sjcl.codec.utf8String.toBits(password);
@@ -116,6 +140,49 @@ function encryptPW(password) {
             resolve(secretKey)
         })
 }
+// {
+    //    .algorithm = kCCAlgorithmAES128,
+    //    .mode = kCCModeCBC,
+    //    .blockSize = kCCBlockSizeAES128,
+    //    .IVSize = kCCBlockSizeAES128,
+    //    .padding = ccPKCS7Padding,
+    //
+    //    .keySettings = {
+    //        .keySize = kCCKeySizeAES256,
+    //        .saltSize = 8,
+    //        .rounds = 1,
+    //        .PRF = kCCPRFHmacAlgSHA1
+    //    },
+    //};
+function encrypt(plainText, key) {
+    return CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(plainText), key, {
+      keySize: 256 / 8,
+    //   iv: CryptoJS.enc.Base64.parse("IWFvbR1NouI693AnbARpgg=="),
+        // iv: CryptoJS.enc.Base64.parse("IWFvbR1NouI693AnbARpgg=="),
+        algorithm: CryptoJS.algo.AES,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7,
+        // format: CryptoJS.format.Hex
+    }).toString();
+  }
+
+function decrypt(ciphertext, key) {
+    if(!ciphertext) return "";
+    return CryptoJS.AES.decrypt(ciphertext, key, {
+        keySize: 256 / 8,
+        // iv: CryptoJS.enc.Base64.parse("IWFvbR1NouI693AnbARpgg=="),
+        algorithm: CryptoJS.algo.AES,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    }).toString(CryptoJS.enc.Utf8);
+  }
+
+function decode(encodedText)
+  {
+    var parsedWordArray = CryptoJS.enc.Base64.parse(encodedText);
+    return parsedWordArray.toString(CryptoJS.enc.Utf8);
+  }
+
 
 function toBits(str) {
     str = unescape(encodeURIComponent(str));
